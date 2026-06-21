@@ -59,9 +59,7 @@ const useSignupController = () => {
         if (isSuccess) {
             showInfoModal({
                 title: "Thank You!",
-                message: "Please complete profile details.",
-                button_text: "Continue",
-                onConfirm: () => replace(ROUTES.COMPLETE_PROFILE)
+                message: "Your account has been created successfully.",
             })
         }
     }, [isSuccess])

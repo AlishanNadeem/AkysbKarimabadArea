@@ -19,7 +19,7 @@ const ImageUploader = ({ label, required, onPress, onRemove, image }) => {
                 )
             }
             <Touchable style={styles.upload_container} onPress={onPress}>
-                <Icon source={images.add_image} size={38} color={colors.white} />
+                <Icon source={images.add_image} size={38} color={colors.black} />
                 <View style={styles.text_container}>
                     <Text size={16} align="center">Upload Profile Photo</Text>
                     <Text size={16} align="center">WebP, PNG, JPG, Or JPEG — Max 5MB</Text>
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     },
     upload_container: {
         borderWidth: heightPixel(1),
-        borderColor: colors.light_primary,
+        borderColor: colors.light_gray,
         borderRadius: heightPixel(16),
         paddingVertical: heightPixel(24),
         paddingHorizontal: widthPixel(24),

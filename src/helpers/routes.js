@@ -25,7 +25,6 @@ const HEADER_RIGHT = {
 
 export const NAVIGATORS = {
     AUTH_STACK: "AuthStackNavigator",
-    COMPLETE_PROFILE_STACK: "CompleteProfileStackNavigator",
     APP_DRAWER: "AppDrawerNavigator",
     APP_STACK: "AppStackNavigator",
     BOTTOM: "BottomNavigator",
@@ -39,15 +38,14 @@ export const ROUTES = {
     FORGET_PASSWORD: "ForgetPassword",
     VERIFY_CODE: "VerifyCode",
     SET_PASSWORD: "SetPassword",
-    COMPLETE_PROFILE: "CompleteProfile",
 
     HOME: "Home",
     CONFIGURE: "Configure",
-    CONTACTS: "Contacts",
+    EVENTS: "Events",
     MY_PROFILE: "MyProfile",
 
     CHECKIN_SETTINGS: "CheckInSetting",
-    MANAGE_CONTACT: "ManageContact",
+    MANAGE_EVENT: "ManageEvent",
     ALERT_DETAILS: "AlertDetails",
     MAP: "Map",
     DAILY_CHECK_IN: "DailyCheckIn",
@@ -100,10 +98,6 @@ export const ROUTES_OPTIONS = {
         headerShown: false,
     },
 
-    [ROUTES.COMPLETE_PROFILE]: {
-        headerShown: false,
-    },
-
     [ROUTES.SUBSCRIPTION_PLANS]: {
         ...screenOptionsWithTitle("Subscription Plans"),
         headerLeft: HEADER_LEFT.back,
@@ -121,7 +115,7 @@ export const ROUTES_OPTIONS = {
         headerShown: false,
     },
 
-    [ROUTES.CONTACTS]: {
+    [ROUTES.EVENTS]: {
         headerShown: false,
     },
 
@@ -134,7 +128,7 @@ export const ROUTES_OPTIONS = {
         headerLeft: HEADER_LEFT.back,
     },
 
-    [ROUTES.MANAGE_CONTACT]: {
+    [ROUTES.MANAGE_EVENT]: {
         ...screenOptionsWithTitle(),
         headerLeft: HEADER_LEFT.back,
     },

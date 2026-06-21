@@ -179,3 +179,38 @@ export const RELATIONS = [
     { id: 15, name: "Cousin" },
     { id: 16, name: "Guardian" }
 ]
+
+export const EVENT_TYPES = [
+    { value: "area", label: "Area" },
+    { value: "local", label: "Local" },
+    { value: "regional", label: "Regional" },
+]
+
+export const EVENTS = [
+    {
+        id: "1",
+        name: "Karimabad Sports Day",
+        description: "Annual sports event for youth members across the jamat.",
+        type: "local",
+        date: {
+            from: "2026-07-15T00:00:00",
+            to: "2026-07-15T00:00:00",
+        },
+        time: {
+            from: "09:00",
+            to: "17:00",
+        },
+        venue: "Karimabad Ground",
+        fees: "500",
+        age: {
+            from: "12",
+            to: "25",
+        },
+        max_registrations: {
+            enabled: true,
+            limit: "100",
+        },
+        registration_deadline: "2026-07-10T00:00:00",
+        image: images.dummy,
+    },
+]

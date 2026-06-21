@@ -72,7 +72,7 @@ const AppContent = () => {
 
   return (
     <SafeAreaProvider>
-      <StatusBar barStyle={'light-content'} />
+      <StatusBar barStyle={'dark-content'} />
       <View style={styles.container}>
         <NavigationContainer ref={navigation_ref} onReady={toggleNavigationReady}>
           <MainStackNavigator />

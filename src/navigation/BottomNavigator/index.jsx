@@ -7,7 +7,7 @@ import colors from "../../helpers/colors"
 import { BOTTOM_BAR_BOTTOM_PADDING, BOTTOM_BAR_HEIGHT, heightPixel, widthPixel } from "../../helpers/metrics"
 import { GLOBAL_HEADER_OPTIONS, ROUTES, ROUTES_OPTIONS } from "../../helpers/routes"
 import Configure from "../../screens/Configure"
-import Contacts from "../../screens/Contacts"
+import Events from "../../screens/Events"
 import Home from "../../screens/Home"
 import MyProfile from "../../screens/MyProfile"
 
@@ -52,13 +52,13 @@ const BottomNavigator = () => {
                 }}
             />
             <Tab.Screen
-                name={ROUTES.CONTACTS}
-                component={Contacts}
+                name={ROUTES.EVENTS}
+                component={Events}
                 options={{
                     tabBarIcon: ({ focused }) => (
-                        <TabIcon source={images.home_contact} label="Contacts" focused={focused} />
+                        <TabIcon source={images.calendar} label="Events" focused={focused} />
                     ),
-                    ...ROUTES_OPTIONS[ROUTES.CONTACTS]
+                    ...ROUTES_OPTIONS[ROUTES.EVENTS]
                 }}
             />
             <Tab.Screen
