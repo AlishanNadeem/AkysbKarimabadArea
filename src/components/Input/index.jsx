@@ -86,7 +86,7 @@ const Input = ({
                 value={value}
                 onChangeText={onChangeText}
                 placeholder={placeholder}
-                placeholderTextColor={colors.white}
+                placeholderTextColor={colors.gray}
                 keyboardType={config.keyboardType}
                 autoCapitalize={config.autoCapitalize}
                 autoCorrect={config.autoCorrect}
@@ -106,7 +106,7 @@ const Input = ({
                 <Icon
                     source={is_password_visible ? images.eye : images.eye_slash}
                     size={20}
-                    color={colors.white}
+                    color={colors.light_primary}
                     onPress={togglePassword}
                 />
             ) : (
@@ -114,7 +114,7 @@ const Input = ({
                     <Icon
                         source={icon}
                         size={20}
-                        color={colors.white}
+                        color={colors.light_primary}
                         onPress={onIconPress}
                     />
                 )
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     input: {
         flex: 1,
         fontFamily: fonts.lexend.regular,
-        color: colors.white,
+        color: colors.black,
         fontSize: font(14)
     },
     input_textarea: {

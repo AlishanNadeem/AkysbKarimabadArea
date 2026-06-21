@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         overflow: 'hidden',
-        borderRadius: heightPixel(8),
+        borderRadius: heightPixel(12),
         borderWidth: heightPixel(1),
     },
 });

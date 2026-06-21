@@ -23,7 +23,7 @@ const ContentWrapper = ({ children, background, top_padding, bottom_padding, pad
 
     const content = scrollable ? (
         <View style={wrapper_style}>
-            {background && <BackgroundWatermark />}
+            {/* {background && <BackgroundWatermark />} */}
             <ScrollView
                 contentContainerStyle={[
                     padding_horizontal ? styles.padding_horizontal : {},
@@ -36,7 +36,7 @@ const ContentWrapper = ({ children, background, top_padding, bottom_padding, pad
         </View>
     ) : (
         <View style={[wrapper_style, padding_horizontal ? styles.padding_horizontal : {}, { paddingBottom: bottom_padding }]}>
-            {background && <BackgroundWatermark />}
+            {/* {background && <BackgroundWatermark />} */}
             {children}
         </View>
     )

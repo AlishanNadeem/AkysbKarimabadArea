@@ -112,7 +112,7 @@ const CustomDrawer = (props) => {
                         DRAWER.map(item => (
                             <Row align="center" justify="space-between" onPress={() => onPressItem(item)} key={item.label} style={{ borderBottomWidth: heightPixel(1), borderBottomColor: colors.light_primary, paddingVertical: heightPixel(24) }}>
                                 <Row align="center" gap={8} style={{ width: "auto" }}>
-                                    {item?.icon && <Icon source={item.icon} size={24} />}
+                                    {item?.icon && <Icon source={item.icon} size={24} color={colors.black} />}
                                     <Text size={16}>{item.label}</Text>
                                 </Row>
                                 <Icon color={colors.light_primary} source={images.arrow_right} size={15} />

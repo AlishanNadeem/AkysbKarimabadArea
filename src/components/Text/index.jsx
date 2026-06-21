@@ -16,7 +16,7 @@ const Text = ({
     children,
     size = 14,
     weight = 'regular',
-    color = colors.white,
+    color = colors.black,
     align = 'left',
     underline = false,
     italic = false,
