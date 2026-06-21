@@ -1,0 +1,60 @@
+const images = {
+    full_logo: require("./full_logo.png"),
+    logo: require("./logo.png"),
+    eye: require("./eye.png"),
+    eye_slash: require("./eye_slash.png"),
+    mail: require("./mail.png"),
+    check: require("./check.png"),
+    google: require("./google.png"),
+    apple: require("./apple.png"),
+    drawer: require("./drawer.png"),
+    back: require("./back.png"),
+    notifications: require("./notifications.png"),
+    info: require("./info.png"),
+    info_inverse: require("./info_inverse.png"),
+    camera: require("./camera.png"),
+    gallery: require("./gallery.png"),
+    close: require("./close.png"),
+    add_image: require("./document_upload.png"),
+    filled_add_image: require("./filled_document_upload.png"),
+    check_badge: require("./check_badge.png"),
+    alert: require("./alert.png"),
+    shield: require("./shield.png"),
+    clock: require("./clock.png"),
+    siren: require("./siren.png"),
+    arrow_right: require("./arrow_right.png"),
+    trash: require("./trash.png"),
+    edit: require("./edit.png"),
+    pin: require("./pin.png"),
+    clock_animated: require("./clock_animated.png"),
+    calendar_animated: require("./calendar_animated.png"),
+    calendar: require("./calendar.png"),
+    down_arrow: require("./down_arrow.png"),
+
+    // Drawer
+    drawer_logout: require("./drawer_logout.png"),
+    drawer_contact_us: require("./drawer_contact_us.png"),
+    drawer_subscription_management: require("./drawer_subscription_management.png"),
+    drawer_terms: require("./drawer_terms.png"),
+    drawer_profile: require("./drawer_profile.png"),
+    drawer_content: require("./drawer_content.png"),
+    drawer_home: require("./drawer_home.png"),
+
+    // Bottom
+    home_bottom: require("./home.png"),
+    home_profile: require("./home_profile.png"),
+    home_configure: require("./home_configure.png"),
+    home_contact: require("./home_contact.png"),
+
+    bag: require("./bag.png"),
+    pack_bottom: require("./pack.png"),
+    bookings_bottom: require("./bookings.png"),
+    profile_bottom: require("./profile.png"),
+    menu: require("./menu.png"),
+
+    // avatars
+    avatar_one: require("./avatar_one.jpg"),
+    dummy: require("./dummy.jpg"),
+}
+
+export default images

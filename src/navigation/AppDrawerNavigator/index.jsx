@@ -1,0 +1,37 @@
+import { createDrawerNavigator } from "@react-navigation/drawer"
+import CustomDrawer from "../../components/Navigation/CustomDrawer"
+import { GLOBAL_HEADER_OPTIONS, NAVIGATORS, ROUTES, ROUTES_OPTIONS } from "../../helpers/routes"
+import AboutUs from "../../screens/AboutUs"
+import ContactUs from "../../screens/ContactUs"
+import Notifications from "../../screens/Notifications"
+import AppStackNavigator from "../AppStackNavigator"
+import TermsAndConditions from "../../screens/TermsAndConditions"
+import PrivacyPolicy from "../../screens/PrivacyPolicy"
+import SubscriptionPlans from "../../screens/SubscriptionPlans"
+
+const Drawer = createDrawerNavigator()
+
+const AppDrawerNavigator = () => {
+    return (
+        <Drawer.Navigator
+            drawerContent={(props) => <CustomDrawer {...props} />}
+            screenOptions={{
+                ...GLOBAL_HEADER_OPTIONS,
+                drawerStyle: { width: "100%" },
+                drawerType: "slide"
+            }}
+        >
+
+            <Drawer.Screen name={NAVIGATORS.APP_STACK} component={AppStackNavigator} options={ROUTES_OPTIONS[NAVIGATORS.APP_STACK]} />
+            <Drawer.Screen name={ROUTES.NOTIFICATIONS} component={Notifications} options={ROUTES_OPTIONS[ROUTES.NOTIFICATIONS]} />
+            <Drawer.Screen name={ROUTES.ABOUT_US} component={AboutUs} options={ROUTES_OPTIONS[ROUTES.ABOUT_US]} />
+            <Drawer.Screen name={ROUTES.TERMS_AND_CONDITIONS} component={TermsAndConditions} options={ROUTES_OPTIONS[ROUTES.TERMS_AND_CONDITIONS]} />
+            <Drawer.Screen name={ROUTES.PRIVACY_POLICY} component={PrivacyPolicy} options={ROUTES_OPTIONS[ROUTES.PRIVACY_POLICY]} />
+            <Drawer.Screen name={ROUTES.CONTACT_US} component={ContactUs} options={ROUTES_OPTIONS[ROUTES.CONTACT_US]} />
+            <Drawer.Screen name={ROUTES.SUBSCRIPTION_PLANS} component={SubscriptionPlans} options={ROUTES_OPTIONS[ROUTES.SUBSCRIPTION_PLANS]} />
+
+        </Drawer.Navigator>
+    )
+}
+
+export default AppDrawerNavigator

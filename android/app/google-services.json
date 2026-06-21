@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "111401629668",
+    "project_id": "checking-up-a7faa",
+    "storage_bucket": "checking-up-a7faa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:111401629668:android:8e5f97c289d86838c239f1",
+        "android_client_info": {
+          "package_name": "com.pixelgenesys.checkingup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "111401629668-dnli74bdekits0br66such7c3jak5bup.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pixelgenesys.checkingup",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "111401629668-n35lltcqn1c20ctln1ajbjr83tas1gta.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pixelgenesys.checkingup",
+            "certificate_hash": "486105d95ea3b7de64721e2ccc1d8cb51624a3c2"
+          }
+        },
+        {
+          "client_id": "111401629668-es83tecpv0406nqg29mfu9spf8fa8ifi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDf0qvPX78MVWtJsJlKNPmeYBIwQT-AoVU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "111401629668-es83tecpv0406nqg29mfu9spf8fa8ifi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
