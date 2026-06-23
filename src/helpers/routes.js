@@ -83,7 +83,8 @@ export const ROUTES_OPTIONS = {
     },
 
     [ROUTES.HOME]: {
-        headerShown: false,
+        ...screenOptionsWithTitle(undefined, "secondary"),
+        headerLeft: HEADER_LEFT.drawer,
         in_drawer: true,
         drawer_label: "Home",
     },
