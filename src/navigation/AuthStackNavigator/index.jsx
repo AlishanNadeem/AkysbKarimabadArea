@@ -17,10 +17,10 @@ const AuthStackNavigator = () => {
 
     return (
         <Stack.Navigator screenOptions={GLOBAL_HEADER_OPTIONS}>
-            {
+            {/* {
                 first_launch &&
                 <Stack.Screen name={ROUTES.ONBOARDING} component={Onboarding} options={ROUTES_OPTIONS[ROUTES.ONBOARDING]} />
-            }
+            } */}
             <Stack.Screen name={ROUTES.LOGIN} component={Login} options={ROUTES_OPTIONS[ROUTES.LOGIN]} />
             <Stack.Screen name={ROUTES.SIGNUP} component={Signup} options={ROUTES_OPTIONS[ROUTES.SIGNUP]} />
             <Stack.Screen name={ROUTES.FORGET_PASSWORD} component={ForgotPassword} options={ROUTES_OPTIONS[ROUTES.FORGET_PASSWORD]} />
