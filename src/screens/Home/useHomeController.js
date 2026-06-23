@@ -1,52 +1,47 @@
-import { useCallback, useEffect, useRef, useState } from "react"
+import { useCallback } from "react"
+import dayjs from "dayjs"
 import { useSelector } from "react-redux"
+import { HOME_STATS, HOME_UPCOMING_EVENTS } from "../../helpers/data"
+import { getGreeting } from "../../helpers/general"
 import { navigate } from "../../helpers/navigation"
 import { ROUTES } from "../../helpers/routes"
-import { selectAlertMode } from "../../redux/selectors"
+import { selectUser } from "../../redux/selectors"
 
 const useHomeController = () => {
 
+    const user = useSelector(selectUser)
 
-    const [timer, setTimer] = useState(60)
-    const intervalRef = useRef(null)
-
-    const startTimer = () => {
-        setTimer(60)
-        clearInterval(intervalRef.current)
-        intervalRef.current = setInterval(() => {
-            setTimer((prev) => {
-                if (prev <= 1) {
-                    clearInterval(intervalRef.current)
-                    return 0
-                }
-                return prev - 1
-            })
-        }, 1000)
-    }
-
-    useEffect(() => {
-        startTimer()
-        return () => clearInterval(intervalRef.current)
+    const onCreateEvent = useCallback(() => {
+        navigate(ROUTES.MANAGE_EVENT)
     }, [])
 
-    const alert_mode = useSelector(selectAlertMode)
-
-    const onCheckIn = useCallback(() => {
-        navigate(ROUTES.DAILY_CHECK_IN)
+    const onBrowseEvents = useCallback(() => {
+        navigate(ROUTES.EVENTS)
     }, [])
 
-    const onAlert = useCallback(() => {
-        navigate(ROUTES.ALERT_DETAILS)
+    const onMyRegistrations = useCallback(() => {
+        navigate(ROUTES.MANAGE_REGISTRATION)
+    }, [])
+
+    const onEditEvent = useCallback((id) => {
+        navigate(ROUTES.MANAGE_EVENT, { id })
     }, [])
 
     return {
         values: {
-            alert_mode, timer
+            greeting: getGreeting(),
+            today_date: dayjs().format("dddd, MMMM D, YYYY"),
+            user_name: user?.name ?? "Member",
+            user_subtitle: user?.role?.name,
+            stats: HOME_STATS,
+            upcoming_events: HOME_UPCOMING_EVENTS,
         },
         functions: {
-            onAlert,
-            onCheckIn
-        }
+            onCreateEvent,
+            onBrowseEvents,
+            onMyRegistrations,
+            onEditEvent,
+        },
     }
 }
 

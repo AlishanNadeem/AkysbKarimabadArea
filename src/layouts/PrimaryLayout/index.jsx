@@ -4,7 +4,7 @@ import { Image, ScrollView, StyleSheet, View } from "react-native"
 import { useSafeAreaInsets } from "react-native-safe-area-context"
 import images from "../../assets/images"
 import colors from "../../helpers/colors"
-import { BOTTOM_BAR_BOTTOM_PADDING, BOTTOM_BAR_HEIGHT, GLOBAL_HORIZONTAL_PADDING, heightPixel, widthPixel } from "../../helpers/metrics"
+import { GLOBAL_HORIZONTAL_PADDING, heightPixel, widthPixel } from "../../helpers/metrics"
 
 const BackgroundWatermark = () => (
     <Image
@@ -45,13 +45,13 @@ const ContentWrapper = ({ children, background, top_padding, bottom_padding, pad
 
 }
 
-const PrimaryLayout = ({ children, background = false, padding_horizontal = true, top = true, header = false, scrollable = false, bottom_tab = false }) => {
+const PrimaryLayout = ({ children, background = false, padding_horizontal = true, top = true, header = false, scrollable = false }) => {
 
     const insets = useSafeAreaInsets()
     const header_height = useHeaderHeight()
 
     const top_padding = !top ? 0 : header ? header_height : insets.top
-    const bottom_padding = !bottom_tab ? insets.bottom : BOTTOM_BAR_HEIGHT + (BOTTOM_BAR_BOTTOM_PADDING * 2)
+    const bottom_padding = insets.bottom
 
     return (
         <View style={styles.container}>

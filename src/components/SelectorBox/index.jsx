@@ -8,14 +8,13 @@ import Touchable from "../Touchable"
 const SelectorBox = ({ label, selected, onPress }) => {
     return (
         <Touchable
-            ripple
             onPress={onPress}
             style={[styles.container, selected && styles.selected]}
         >
             <Text
-                size={16}
-                weight="semibold"
-                color={selected ? colors.white : colors.black}
+                size={14}
+                weight={selected ? "semibold" : "regular"}
+                color={selected ? colors.white : colors.dark_gray}
             >
                 {label}
             </Text>
@@ -27,14 +26,13 @@ export default memo(SelectorBox)
 
 const styles = StyleSheet.create({
     container: {
-        height: heightPixel(87),
-        width: "30%",
-        borderRadius: widthPixel(14),
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: colors.yellowish_primary,
+        alignSelf: "flex-start",
+        paddingHorizontal: widthPixel(14),
+        paddingVertical: heightPixel(8),
+        borderRadius: widthPixel(8),
+        backgroundColor: colors.light_gray,
     },
     selected: {
-        backgroundColor: colors.danger,
+        backgroundColor: colors.dark_gray,
     },
 })

@@ -34,22 +34,12 @@ const images = {
     // Drawer
     drawer_logout: require("./drawer_logout.png"),
     drawer_contact_us: require("./drawer_contact_us.png"),
-    drawer_subscription_management: require("./drawer_subscription_management.png"),
-    drawer_terms: require("./drawer_terms.png"),
     drawer_profile: require("./drawer_profile.png"),
-    drawer_content: require("./drawer_content.png"),
     drawer_home: require("./drawer_home.png"),
-
-    // Bottom
-    home_bottom: require("./home.png"),
-    home_profile: require("./home_profile.png"),
-    home_configure: require("./home_configure.png"),
-    home_contact: require("./home_contact.png"),
 
     bag: require("./bag.png"),
     pack_bottom: require("./pack.png"),
     bookings_bottom: require("./bookings.png"),
-    profile_bottom: require("./profile.png"),
     menu: require("./menu.png"),
 
     // avatars

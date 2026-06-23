@@ -20,38 +20,31 @@ const DRAWER = [
     {
         label: "Home",
         icon: images.drawer_home,
-        route: NAVIGATORS.APP_STACK
+        route: NAVIGATORS.APP_STACK,
+        params: { screen: ROUTES.HOME },
     },
     {
-        label: "Subscription Management",
-        icon: images.drawer_subscription_management,
-        route: ROUTES.SUBSCRIPTION_PLANS
+        label: "Events",
+        icon: images.calendar,
+        route: NAVIGATORS.APP_STACK,
+        params: { screen: ROUTES.EVENTS },
     },
     {
-        label: "Terms & Conditions",
-        icon: images.drawer_terms,
-        route: ROUTES.TERMS_AND_CONDITIONS
-    },
-    {
-        label: "Privacy Policy",
-        icon: images.drawer_content,
-        route: ROUTES.PRIVACY_POLICY
-    },
-    {
-        label: "About Us",
-        icon: images.drawer_content,
-        route: ROUTES.ABOUT_US
+        label: "Profile",
+        icon: images.drawer_profile,
+        route: NAVIGATORS.APP_STACK,
+        params: { screen: ROUTES.MY_PROFILE },
     },
     {
         label: "Contact Us",
         icon: images.drawer_contact_us,
-        route: ROUTES.CONTACT_US
+        route: ROUTES.CONTACT_US,
     },
     {
         label: "Log Out",
         icon: images.drawer_logout,
-        type: "logout"
-    }
+        type: "logout",
+    },
 ]
 
 const BackgroundWatermark = () => (
@@ -86,7 +79,8 @@ const CustomDrawer = (props) => {
         if (item.type === "logout") {
             onLogout()
         } else if (item.route) {
-            navigate(item.route)
+            closeDrawer()
+            navigate(item.route, item.params)
         }
     }
 

@@ -14,34 +14,6 @@ export const USER = {
     emergency_notes: "I have diabetes and keep insulin in the fridge."
 }
 
-export const ACTIVITY_LOGS = [
-    {
-        id: 1,
-        type: "check_in",
-        title: "Checked In – Feeling Good",
-        timestamp: "2026-04-23T10:00:00",
-    },
-    {
-        id: 2,
-        type: "alert",
-        title: "SOS Alert Triggered",
-        timestamp: "2026-04-23T06:00:00",
-    },
-    {
-        id: 3,
-        type: "check_in",
-        title: "Checked In – Need Help? No",
-        timestamp: "2026-04-22T22:00:00",
-    },
-    {
-        id: 4,
-        type: "alert",
-        title: "SOS Alert Triggered",
-        timestamp: "2026-04-12T13:00:00",
-        user: { id: 1, name: "Max", relation: "Son" },
-    },
-]
-
 export const CONTACTS = [
     {
         id: "1",
@@ -72,47 +44,6 @@ export const CONTACTS = [
         name: "Linda Doe",
         relation: "Mother",
         phone: "555-0105"
-    },
-]
-
-export const SUBSCRIPTION_PLANS = [
-    {
-        id: 1,
-        trial: true,
-        title: "14 Days Trial",
-        price_label: "Free",
-        plan_name: "Freemium Plan",
-        price_update_note: "Will Update Verbiage Soon",
-        features: [
-            "AI Summary-level responses",
-            "Group Chat (Limited)",
-            "Max Group Size (5-7 users)",
-            "Max active Collaborative trips (2)",
-            "Smart Itinerary Builder (1 Itinerary)",
-            "AI generated day-by-day itinerary",
-            "Editable itinerary (manual edits only)",
-            "Limited number of itinerary regenerations",
-        ],
-        modal_text: "You have continued with a Freemium plan for 14 Days free trial."
-    },
-    {
-        id: 2,
-        trial: false,
-        title: "Monthly",
-        price_label: "$20.00",
-        plan_name: "Premium Plan",
-        price_update_note: "Will Update Verbiage Soon",
-        features: [
-            "AI Summary-level responses",
-            "Group Chat (Limited)",
-            "Max Group Size (5-7 users)",
-            "Max active Collaborative trips (2)",
-            "Smart Itinerary Builder (1 Itinerary)",
-            "AI generated day-by-day itinerary",
-            "Editable itinerary (manual edits only)",
-            "Limited number of itinerary regenerations",
-        ],
-        modal_text: "You have successfully paid for you premium subscription plan."
     },
 ]
 
@@ -159,27 +90,6 @@ export const NOTIFICATIONS = [
     }
 ]
 
-export const LOREM = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
-
-export const RELATIONS = [
-    { id: 1, name: "Father" },
-    { id: 2, name: "Mother" },
-    { id: 3, name: "Husband" },
-    { id: 4, name: "Wife" },
-    { id: 5, name: "Son" },
-    { id: 6, name: "Daughter" },
-    { id: 7, name: "Brother" },
-    { id: 8, name: "Sister" },
-    { id: 9, name: "Grandfather" },
-    { id: 10, name: "Grandmother" },
-    { id: 11, name: "Uncle" },
-    { id: 12, name: "Aunt" },
-    { id: 13, name: "Nephew" },
-    { id: 14, name: "Niece" },
-    { id: 15, name: "Cousin" },
-    { id: 16, name: "Guardian" }
-]
-
 export const EVENT_TYPES = [
     { value: "area", label: "Area" },
     { value: "local", label: "Local" },
@@ -189,9 +99,11 @@ export const EVENT_TYPES = [
 export const EVENTS = [
     {
         id: "1",
+        _id: "1",
         name: "Karimabad Sports Day",
         description: "Annual sports event for youth members across the jamat.",
         type: "local",
+        status: "published",
         date: {
             from: "2026-07-15T00:00:00",
             to: "2026-07-15T00:00:00",
@@ -201,16 +113,98 @@ export const EVENTS = [
             to: "17:00",
         },
         venue: "Karimabad Ground",
-        fees: "500",
+        fees: 500,
+        is_free: false,
         age: {
-            from: "12",
-            to: "25",
+            from: 12,
+            to: 25,
         },
         max_registrations: {
             enabled: true,
-            limit: "100",
+            limit: 100,
         },
         registration_deadline: "2026-07-10T00:00:00",
         image: images.dummy,
     },
+    {
+        id: "2",
+        _id: "2",
+        name: "Youth Leadership Workshop",
+        description: "Interactive sessions on leadership and community service.",
+        type: "local",
+        status: "published",
+        date: {
+            from: "2026-08-02T00:00:00",
+            to: "2026-08-02T00:00:00",
+        },
+        time: {
+            from: "10:00",
+            to: "14:00",
+        },
+        venue: "AKYSB Community Hall",
+        fees: 0,
+        is_free: true,
+        age: {
+            from: 16,
+            to: 30,
+        },
+        max_registrations: {
+            enabled: true,
+            limit: 50,
+        },
+        registration_deadline: "2026-07-28T00:00:00",
+        image: images.dummy,
+    },
+    {
+        id: "3",
+        _id: "3",
+        name: "Regional Football Tournament",
+        description: "Inter-jamat football competition for regional teams.",
+        type: "regional",
+        status: "published",
+        date: {
+            from: "2026-09-10T00:00:00",
+            to: "2026-09-12T00:00:00",
+        },
+        time: {
+            from: "08:00",
+            to: "18:00",
+        },
+        venue: "City Sports Complex",
+        fees: 300,
+        is_free: false,
+        age: {
+            from: 14,
+            to: 22,
+        },
+        max_registrations: {
+            enabled: true,
+            limit: 200,
+        },
+        registration_deadline: "2026-09-01T00:00:00",
+        image: images.dummy,
+    },
+]
+
+export const HOME_STATS = [
+    { id: "1", label: "Upcoming", value: "5", icon: images.calendar },
+    { id: "2", label: "Registered", value: "2", icon: images.check_badge },
+    { id: "3", label: "This Month", value: "8", icon: images.clock },
+]
+
+export const HOME_UPCOMING_EVENTS = EVENTS
+
+export const PAYMENT_METHODS = [
+    { value: "cash", label: "Cash" },
+    { value: "online_transfer", label: "Online Transfer" },
+]
+
+export const REGISTRATION_STATUSES = [
+    { value: "active", label: "Active" },
+    { value: "cancelled", label: "Cancelled" },
+]
+
+export const PAYMENT_STATUSES = [
+    { value: "pending", label: "Pending" },
+    { value: "paid", label: "Paid" },
 ]

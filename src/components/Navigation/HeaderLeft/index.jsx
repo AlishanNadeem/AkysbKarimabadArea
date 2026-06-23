@@ -13,7 +13,7 @@ const HeaderLeft = ({ icon, onPress, type = "primary" }) => {
     }
 
     return (
-        <Icon source={icon} onPress={onPress} size={29} {...props} />
+        <Icon source={icon} onPress={onPress} size={29} color={colors.black} {...props} />
     )
 }
 

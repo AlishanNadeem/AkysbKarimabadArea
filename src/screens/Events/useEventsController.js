@@ -1,8 +1,11 @@
 import { useCallback } from "react"
 import { navigate } from "../../helpers/navigation"
 import { ROUTES } from "../../helpers/routes"
+import { useGetEventsQuery } from "../../redux/apis/Event"
 
 const useEventsController = () => {
+
+    const { data, isLoading, isFetching, refetch } = useGetEventsQuery()
 
     const onCreate = useCallback(() => {
         navigate(ROUTES.MANAGE_EVENT)
@@ -14,11 +17,14 @@ const useEventsController = () => {
 
     return {
         values: {
-            events: [],
+            data: data?.data ?? [],
+            isLoading,
+            refreshing: isFetching,
         },
         functions: {
             onCreate,
             onEdit,
+            onRefresh: refetch,
         },
     }
 }

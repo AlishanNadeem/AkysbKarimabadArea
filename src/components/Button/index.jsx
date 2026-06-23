@@ -11,7 +11,7 @@ import Touchable from '../Touchable';
 
 const BUTTON_SIZES = {
     sm: { height: heightPixel(40), font_size: 14, padding_horizontal: widthPixel(16) },
-    md: { height: heightPixel(52), font_size: 19, padding_horizontal: widthPixel(20) },
+    md: { height: heightPixel(52), font_size: 16, padding_horizontal: widthPixel(20) },
     lg: { height: heightPixel(62), font_size: 22, padding_horizontal: widthPixel(24) },
 };
 
@@ -52,7 +52,7 @@ const Button = ({
     children,
     onPress,
     size = 'md',
-    type = 'primary',
+    type = 'black',
     disabled = false,
     loading = false,
     icon,

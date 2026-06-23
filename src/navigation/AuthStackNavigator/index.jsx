@@ -26,7 +26,6 @@ const AuthStackNavigator = () => {
             <Stack.Screen name={ROUTES.FORGET_PASSWORD} component={ForgotPassword} options={ROUTES_OPTIONS[ROUTES.FORGET_PASSWORD]} />
             <Stack.Screen name={ROUTES.VERIFY_CODE} component={VerifyCode} options={ROUTES_OPTIONS[ROUTES.VERIFY_CODE]} />
             <Stack.Screen name={ROUTES.SET_PASSWORD} component={SetPassword} options={ROUTES_OPTIONS[ROUTES.SET_PASSWORD]} />
-            {/* <Stack.Screen name={ROUTES.SUBSCRIPTION_PLANS} component={SubscriptionPlans} options={ROUTES_OPTIONS[ROUTES.SUBSCRIPTION_PLANS]} /> */}
         </Stack.Navigator>
     )
 }

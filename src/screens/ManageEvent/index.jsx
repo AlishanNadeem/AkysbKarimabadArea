@@ -54,7 +54,7 @@ const ManageEvent = () => {
                     />
 
                     <Text size={19} weight="semibold">Event Type</Text>
-                    <Row justify="space-between" style={styles.options_row}>
+                    <Row gap={8} style={styles.options_row}>
                         {values.event_types.map((item) => (
                             <SelectorBox
                                 key={item.value}
@@ -74,18 +74,18 @@ const ManageEvent = () => {
                         required
                         label="Start Date"
                         placeholder="Select start date"
-                        value={formik.values.date_from}
-                        onChangeText={(value) => formik.setFieldValue("date_from", value)}
-                        error={formik.touched.date_from && formik.errors.date_from}
+                        value={formik.values.date.from}
+                        onChangeText={(value) => formik.setFieldValue("date.from", value)}
+                        error={formik.touched.date?.from && formik.errors.date?.from}
                     />
 
                     <DateTimeInput
                         required
                         label="End Date"
                         placeholder="Select end date"
-                        value={formik.values.date_to}
-                        onChangeText={(value) => formik.setFieldValue("date_to", value)}
-                        error={formik.touched.date_to && formik.errors.date_to}
+                        value={formik.values.date.to}
+                        onChangeText={(value) => formik.setFieldValue("date.to", value)}
+                        error={formik.touched.date?.to && formik.errors.date?.to}
                     />
 
                     <Row gap={12}>
@@ -95,9 +95,9 @@ const ManageEvent = () => {
                                 label="Start Time"
                                 placeholder="Select time"
                                 type="time"
-                                value={formik.values.time_from}
-                                onChangeText={(value) => formik.setFieldValue("time_from", value)}
-                                error={formik.touched.time_from && formik.errors.time_from}
+                                value={formik.values.time.from}
+                                onChangeText={(value) => formik.setFieldValue("time.from", value)}
+                                error={formik.touched.time?.from && formik.errors.time?.from}
                             />
                         </View>
                         <View style={styles.half_field}>
@@ -106,9 +106,9 @@ const ManageEvent = () => {
                                 label="End Time"
                                 placeholder="Select time"
                                 type="time"
-                                value={formik.values.time_to}
-                                onChangeText={(value) => formik.setFieldValue("time_to", value)}
-                                error={formik.touched.time_to && formik.errors.time_to}
+                                value={formik.values.time.to}
+                                onChangeText={(value) => formik.setFieldValue("time.to", value)}
+                                error={formik.touched.time?.to && formik.errors.time?.to}
                             />
                         </View>
                     </Row>
@@ -129,8 +129,11 @@ const ManageEvent = () => {
                         type="number"
                         label="Fees"
                         placeholder="0 for free events"
-                        value={formik.values.fees}
-                        onChangeText={formik.handleChange("fees")}
+                        value={formik.values.fees?.toString() ?? ""}
+                        onChangeText={(value) => formik.setFieldValue(
+                            "fees",
+                            value === "" ? 0 : Number(value)
+                        )}
                         onBlur={formik.handleBlur("fees")}
                         error={formik.touched.fees && formik.errors.fees}
                     />
@@ -143,10 +146,13 @@ const ManageEvent = () => {
                                 type="number"
                                 label="Minimum Age"
                                 placeholder="e.g. 12"
-                                value={formik.values.age_from}
-                                onChangeText={formik.handleChange("age_from")}
-                                onBlur={formik.handleBlur("age_from")}
-                                error={formik.touched.age_from && formik.errors.age_from}
+                                value={formik.values.age?.from?.toString() ?? ""}
+                                onChangeText={(value) => formik.setFieldValue(
+                                    "age.from",
+                                    value === "" ? null : Number(value)
+                                )}
+                                onBlur={formik.handleBlur("age.from")}
+                                error={formik.touched.age?.from && formik.errors.age?.from}
                             />
                         </View>
                         <View style={styles.half_field}>
@@ -154,10 +160,13 @@ const ManageEvent = () => {
                                 type="number"
                                 label="Maximum Age"
                                 placeholder="e.g. 18"
-                                value={formik.values.age_to}
-                                onChangeText={formik.handleChange("age_to")}
-                                onBlur={formik.handleBlur("age_to")}
-                                error={formik.touched.age_to && formik.errors.age_to}
+                                value={formik.values.age?.to?.toString() ?? ""}
+                                onChangeText={(value) => formik.setFieldValue(
+                                    "age.to",
+                                    value === "" ? null : Number(value)
+                                )}
+                                onBlur={formik.handleBlur("age.to")}
+                                error={formik.touched.age?.to && formik.errors.age?.to}
                             />
                         </View>
                     </Row>
@@ -166,20 +175,26 @@ const ManageEvent = () => {
 
                     <Checkbox
                         label="Limit maximum registrations"
-                        value={formik.values.max_registrations_enabled}
-                        onChange={(value) => formik.setFieldValue("max_registrations_enabled", value)}
+                        value={formik.values.max_registrations.enabled}
+                        onChange={(value) => formik.setFieldValue("max_registrations.enabled", value)}
                     />
 
-                    {formik.values.max_registrations_enabled && (
+                    {formik.values.max_registrations.enabled && (
                         <Input
                             required
                             type="number"
                             label="Registration Limit"
                             placeholder="Enter maximum registrations"
-                            value={formik.values.max_registrations_limit}
-                            onChangeText={formik.handleChange("max_registrations_limit")}
-                            onBlur={formik.handleBlur("max_registrations_limit")}
-                            error={formik.touched.max_registrations_limit && formik.errors.max_registrations_limit}
+                            value={formik.values.max_registrations.limit?.toString() ?? ""}
+                            onChangeText={(value) => formik.setFieldValue(
+                                "max_registrations.limit",
+                                value === "" ? null : Number(value)
+                            )}
+                            onBlur={formik.handleBlur("max_registrations.limit")}
+                            error={
+                                formik.touched.max_registrations?.limit
+                                && formik.errors.max_registrations?.limit
+                            }
                         />
                     )}
 
@@ -191,7 +206,9 @@ const ManageEvent = () => {
                         error={formik.touched.registration_deadline && formik.errors.registration_deadline}
                     />
 
-                    <Button onPress={formik.handleSubmit}>{values.button_text}</Button>
+                    <Button onPress={formik.handleSubmit} loading={values.isLoading}>
+                        {values.button_text}
+                    </Button>
 
                 </View>
 

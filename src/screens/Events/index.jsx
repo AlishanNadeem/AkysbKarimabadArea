@@ -1,6 +1,8 @@
-import { StyleSheet, View } from "react-native"
+import { ActivityIndicator, StyleSheet, View } from "react-native"
 import Button from "../../components/Button"
+import EventCard from "../../components/EventCard"
 import FlatList from "../../components/FlatList"
+import colors from "../../helpers/colors"
 import { heightPixel } from "../../helpers/metrics"
 import PrimaryLayout from "../../layouts/PrimaryLayout"
 import useEventsController from "./useEventsController"
@@ -10,23 +12,26 @@ const Events = () => {
     const { values, functions } = useEventsController()
 
     return (
-        <PrimaryLayout header background bottom_tab>
+        <PrimaryLayout header background>
             <View style={styles.container}>
-
-                <View style={styles.add_button}>
-                    <Button size="sm" onPress={functions.onCreate}>Create</Button>
-                </View>
-
+                <Button onPress={functions.onCreate}>Create New Event</Button>
                 <FlatList
-                    data={values.events}
+                    data={values.data}
                     separator={12}
+                    refreshing={values.refreshing}
+                    onRefresh={functions.onRefresh}
                     empty={{
                         title: "No Events",
                         description: "There are no events yet. Create one to get started.",
                     }}
-                    renderItem={() => null}
+                    renderItem={({ item }) => (
+                        <EventCard
+                            data={item}
+                            onEdit={functions.onEdit}
+                        />
+                    )}
+                    loading={values.isLoading}
                 />
-
             </View>
         </PrimaryLayout>
     )
@@ -39,8 +44,9 @@ const styles = StyleSheet.create({
         flex: 1,
         gap: heightPixel(16),
     },
-    add_button: {
-        width: "35%",
-        alignSelf: "flex-end",
+    loader: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
     },
 })
