@@ -13,13 +13,13 @@ import InputLayout from "../../layouts/InputLayout"
 
 const getFlag = (code) => {
     return code
-        .toUpperCase()
+        ?.toUpperCase()
         .replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt()))
 }
 
 const getMaxLength = (code) => {
     try {
-        const example = getExampleNumber(code, examples)
+        const example = getExampleNumber(code ?? "", examples)
         if (!example) return 15
         const national = example.formatNational()
         return national.length
@@ -69,13 +69,13 @@ const PhoneInput = ({
 
         const digits = text.replace(/\D/g, "")
 
-        const formatter = new AsYouType(country.code)
+        const formatter = new AsYouType(country?.code ?? "")
         const formatted = formatter.input(digits)
 
         setDisplayValue(formatted)
         onChangeText(digits)
 
-    }, [country, onChangeText])
+    }, [country?.code, onChangeText])
 
     const handleSelectCountry = useCallback((selected) => {
         setCountry(selected)
