@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.card,
         borderWidth: heightPixel(1),
         borderColor: colors.border,
-
         ...SHADOW.sm,
     },
 })

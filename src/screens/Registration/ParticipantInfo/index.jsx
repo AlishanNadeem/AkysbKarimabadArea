@@ -28,14 +28,14 @@ const ParticipantInfo = () => {
 
                     <View style={styles.header}>
                         <Text size={19} weight="semibold">Participant Information</Text>
-                        <Text size={14} color={colors.gray}>
+                        <Text size={14} color={colors.text_secondary}>
                             Search by contact number or YSB ID, or register new participants.
                         </Text>
                     </View>
 
                     {values.event && (
                         <View style={styles.event_chip}>
-                            <Text size={12} color={colors.gray}>Selected Event</Text>
+                            <Text size={12} color={colors.text_muted}>Selected Event</Text>
                             <Text size={15} weight="semibold">{values.event.name}</Text>
                         </View>
                     )}
@@ -97,8 +97,8 @@ const ParticipantInfo = () => {
 
                     {values.is_searching && (
                         <View style={styles.search_state}>
-                            <ActivityIndicator size="small" color={colors.dark_gray} />
-                            <Text size={13} color={colors.gray}>Searching participants...</Text>
+                            <ActivityIndicator size="small" color={colors.light_primary} />
+                            <Text size={13} color={colors.text_secondary}>Searching participants...</Text>
                         </View>
                     )}
 
@@ -128,7 +128,7 @@ const ParticipantInfo = () => {
                                                 />
                                                 <View style={styles.result_content}>
                                                     <Text size={15} weight="semibold">{item.name}</Text>
-                                                    <Text size={13} color={colors.gray}>
+                                                    <Text size={13} color={colors.text_secondary}>
                                                         {item.membership_id} · {functions.formatParticipantPhone(item.phone)}
                                                     </Text>
                                                 </View>
@@ -147,7 +147,7 @@ const ParticipantInfo = () => {
 
                     {values.show_no_results && (
                         <View style={styles.empty_results}>
-                            <Text size={14} weight="semibold" color={colors.dark_gray}>
+                            <Text size={14} weight="semibold" color={colors.text_primary}>
                                 No participant found
                             </Text>
                             <Text size={13} color={colors.gray}>
@@ -306,8 +306,10 @@ const styles = StyleSheet.create({
         paddingVertical: heightPixel(12),
         paddingHorizontal: widthPixel(14),
         borderRadius: heightPixel(10),
-        backgroundColor: colors.lightest_primary,
+        backgroundColor: colors.surface_brand,
         gap: heightPixel(4),
+        borderWidth: heightPixel(1),
+        borderColor: colors.border_brand,
     },
     roster_section: {
         gap: heightPixel(10),
@@ -328,7 +330,7 @@ const styles = StyleSheet.create({
         paddingVertical: heightPixel(14),
         paddingHorizontal: widthPixel(14),
         borderRadius: heightPixel(10),
-        backgroundColor: colors.light_gray,
+        backgroundColor: colors.surface_brand,
         gap: heightPixel(4),
     },
     results: {
@@ -339,12 +341,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: widthPixel(14),
         borderRadius: heightPixel(10),
         borderWidth: heightPixel(1),
-        borderColor: colors.light_gray,
-        backgroundColor: colors.white,
+        borderColor: colors.border,
+        backgroundColor: colors.surface,
     },
     result_item_selected: {
         borderColor: colors.light_primary,
-        backgroundColor: colors.lightest_primary,
+        backgroundColor: colors.surface_brand_strong,
     },
     result_content: {
         flex: 1,
@@ -353,7 +355,7 @@ const styles = StyleSheet.create({
     form_section: {
         gap: heightPixel(16),
         borderTopWidth: heightPixel(1),
-        borderColor: colors.gray,
+        borderColor: colors.border,
         paddingTop: heightPixel(20),
     },
     half_field: {

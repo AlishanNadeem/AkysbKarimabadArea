@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
         borderRadius: heightPixel(14),
         backgroundColor: colors.white,
         borderWidth: heightPixel(1.5),
-        borderColor: colors.light_gray,
+        borderColor: colors.border,
         overflow: "hidden",
     },
     selected: {

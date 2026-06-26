@@ -135,7 +135,7 @@ export const GLOBAL_HEADER_OPTIONS = {
     headerShown: true,
     headerTitleAlign: "left",
     headerTransparent: true,
-    headerTintColor: colors.white,
+    headerTintColor: colors.black,
     headerBackButtonVisible: false,
     headerLeftContainerStyle: { paddingLeft: GLOBAL_HORIZONTAL_PADDING },
     headerRightContainerStyle: { paddingRight: GLOBAL_HORIZONTAL_PADDING },

@@ -15,16 +15,16 @@ const ParticipantRosterCard = ({ data, onRemove }) => {
                 <Row align="center" justify="space-between">
                     <Text size={15} weight="semibold">{data.name}</Text>
                     <View style={[styles.badge, data.is_existing ? styles.badge_existing : styles.badge_new]}>
-                        <Text size={11} weight="semibold" color={data.is_existing ? colors.light_primary : colors.dark_gray}>
+                        <Text size={11} weight="semibold" color={data.is_existing ? colors.light_primary : colors.text_secondary}>
                             {data.is_existing ? "Existing" : "New"}
                         </Text>
                     </View>
                 </Row>
                 {data.membership_id ? (
-                    <Text size={13} color={colors.gray}>YSB ID: {data.membership_id}</Text>
+                    <Text size={13} color={colors.text_secondary}>YSB ID: {data.membership_id}</Text>
                 ) : null}
                 {data.phone?.number ? (
-                    <Text size={13} color={colors.gray}>{formatParticipantPhone(data.phone)}</Text>
+                    <Text size={13} color={colors.text_secondary}>{formatParticipantPhone(data.phone)}</Text>
                 ) : null}
             </View>
             <Icon
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: widthPixel(14),
         borderRadius: heightPixel(10),
         borderWidth: heightPixel(1),
-        borderColor: colors.light_primary,
-        backgroundColor: colors.lightest_primary,
+        borderColor: colors.border_brand,
+        backgroundColor: colors.surface_brand,
     },
     content: {
         flex: 1,
@@ -64,6 +64,6 @@ const styles = StyleSheet.create({
         backgroundColor: colors.white,
     },
     badge_new: {
-        backgroundColor: colors.light_gray,
+        backgroundColor: colors.surface_brand_strong,
     },
 })

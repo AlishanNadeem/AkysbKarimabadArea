@@ -19,7 +19,7 @@ const SelectEvent = () => {
 
                 <View style={styles.header}>
                     <Text size={19} weight="semibold">Select an Event</Text>
-                    <Text size={14} color={colors.gray}>
+                    <Text size={14} color={colors.text_secondary}>
                         Choose the event you want to register a participant for.
                     </Text>
                 </View>

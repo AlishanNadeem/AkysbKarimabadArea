@@ -14,7 +14,7 @@ const SelectorBox = ({ label, selected, onPress }) => {
             <Text
                 size={14}
                 weight={selected ? "semibold" : "regular"}
-                color={selected ? colors.white : colors.dark_gray}
+                color={selected ? colors.white : colors.text_secondary}
             >
                 {label}
             </Text>
@@ -30,9 +30,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: widthPixel(14),
         paddingVertical: heightPixel(8),
         borderRadius: widthPixel(8),
-        backgroundColor: colors.light_gray,
+        backgroundColor: colors.white,
+        borderWidth: heightPixel(1),
+        borderColor: colors.border,
     },
     selected: {
-        backgroundColor: colors.dark_gray,
+        backgroundColor: colors.light_primary,
+        borderColor: colors.light_primary,
     },
 })

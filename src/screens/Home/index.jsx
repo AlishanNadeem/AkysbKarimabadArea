@@ -18,12 +18,12 @@ const Home = () => {
             <View style={styles.container}>
                 <View style={styles.greeting}>
                     <Row align="center" justify="space-between">
-                        <Text size={14} color={colors.gray}>{values.greeting}</Text>
-                        <Text size={13} color={colors.dark_gray}>{values.today_date}</Text>
+                        <Text size={14} color={colors.text_secondary}>{values.greeting}</Text>
+                        <Text size={13} color={colors.text_muted}>{values.today_date}</Text>
                     </Row>
                     <Text size={24} weight="semibold">{values.user_name}</Text>
                     {values.user_subtitle ? (
-                        <Text size={13} color={colors.dark_gray}>{values.user_subtitle}</Text>
+                        <Text size={13} color={colors.text_secondary}>{values.user_subtitle}</Text>
                     ) : null}
                 </View>
 
@@ -54,7 +54,7 @@ const Home = () => {
                 <View style={styles.section}>
                     <Row align="center" justify="space-between">
                         <Text size={19} weight="semibold">Upcoming</Text>
-                        <Text size={14} color={colors.gray} onPress={functions.onBrowseEvents}>
+                        <Text size={14} color={colors.text_secondary} onPress={functions.onBrowseEvents}>
                             View all
                         </Text>
                     </Row>

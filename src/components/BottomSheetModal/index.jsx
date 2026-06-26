@@ -51,7 +51,7 @@ const BottomSheetModal = ({
                             </Text>
                         )}
                         {subtitle && (
-                            <Text size={14} style={styles.subtitle} color={colors.gray}>
+                            <Text size={14} style={styles.subtitle} color={colors.text_secondary}>
                                 {subtitle}
                             </Text>
                         )}
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
         justifyContent: "flex-end",
     },
     sheet: {
-        backgroundColor: colors.lightest_primary,
+        backgroundColor: colors.surface,
         borderTopLeftRadius: heightPixel(24),
         borderTopRightRadius: heightPixel(24),
         paddingHorizontal: widthPixel(24),
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
         width: widthPixel(40),
         height: heightPixel(4),
         borderRadius: heightPixel(100),
-        backgroundColor: colors.dark_gray,
+        backgroundColor: colors.light_primary,
         alignSelf: "center",
         marginBottom: heightPixel(20),
     },

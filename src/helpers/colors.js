@@ -8,7 +8,7 @@ const colors = {
     light_primary: "#0097B2",
     dark_primary: "#7ED957",
     lime_primary: "#CDFC76",
-    lightest_primary: "#DFFFE3",
+    lightest_primary: "#F0FAFB",
     yellowish_primary: "#EEFFCE",
     leafy_blue: "#90BCBD",
     leafy_green: "#C4FFCC",
@@ -30,6 +30,19 @@ const colors = {
     primary_10: "#E0F5FA",      // light_primary at ~10% — used for published badge
     dark_primary_10: "#EEFAE4", // dark_primary at ~10% — used for completed badge
     text_primary: "#0D1B1E",    // near-black for primary text (fixes missing token)
+
+    // Semantic tokens
+    background: "#FFFFFF",
+    screen_background: "#FAFBFC",
+    surface: "#FFFFFF",
+    surface_brand: "rgba(0, 151, 178, 0.06)",
+    surface_brand_strong: "rgba(0, 151, 178, 0.12)",
+    border: "#E8ECEF",
+    border_brand: "rgba(0, 151, 178, 0.25)",
+    text_primary: "#000000",
+    text_secondary: "#6B7280",
+    text_muted: "#9CA3AF",
+    gradient_primary: ["#0097B2", "#7ED957"],
 }
 
 export default colors

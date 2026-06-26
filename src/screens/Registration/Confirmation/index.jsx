@@ -24,7 +24,7 @@ const Confirmation = () => {
 
                 <View style={styles.header}>
                     <Text size={19} weight="semibold">Confirm Registration</Text>
-                    <Text size={14} color={colors.gray}>
+                    <Text size={14} color={colors.text_secondary}>
                         Review all details before completing the registration.
                     </Text>
                 </View>
@@ -80,7 +80,7 @@ const Confirmation = () => {
                     {values.is_paid_event && (
                         <>
                             <View style={styles.payment_field}>
-                                <Text size={14} color={colors.gray}>Payment Status</Text>
+                                <Text size={14} color={colors.text_secondary}>Payment Status</Text>
                                 <Row gap={8} style={styles.options_row}>
                                     {values.payment_statuses.map((item) => (
                                         <SelectorBox
@@ -98,7 +98,7 @@ const Confirmation = () => {
 
                             {formik.values.status === "paid" && (
                                 <View style={styles.payment_field}>
-                                    <Text size={14} color={colors.gray}>Payment Method</Text>
+                                    <Text size={14} color={colors.text_secondary}>Payment Method</Text>
                                     <Row gap={8} style={styles.options_row}>
                                         {values.payment_methods.map((item) => (
                                             <SelectorBox
@@ -131,7 +131,7 @@ const Confirmation = () => {
 
                     {!values.is_paid_event && (
                         <View style={styles.free_notice}>
-                            <Text size={14} color={colors.dark_gray}>
+                            <Text size={14} color={colors.text_secondary}>
                                 This is a free event. No payment is required.
                             </Text>
                         </View>
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
     participant_block: {
         paddingVertical: heightPixel(8),
         // borderBottomWidth: heightPixel(1),
-        borderBottomColor: colors.light_gray,
+        borderBottomColor: colors.border,
         gap: heightPixel(4),
     },
     payment_field: {

@@ -11,7 +11,7 @@ const SummaryRow = ({ label, value, highlight = false, last = false }) => {
         <View style={[styles.row, {
             borderBottomWidth: last ? 0 : heightPixel(1),
         }]}>
-            <Text size={13} color={colors.gray} style={styles.label}>{label}</Text>
+            <Text size={13} color={colors.text_secondary} style={styles.label}>{label}</Text>
             <Text
                 size={14}
                 weight={highlight ? "semibold" : "regular"}
@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
         gap: widthPixel(12),
         paddingVertical: heightPixel(8),
 
-        borderBottomColor: colors.light_gray,
+        borderBottomColor: colors.border,
     },
     label: {
         flex: 0.4,
