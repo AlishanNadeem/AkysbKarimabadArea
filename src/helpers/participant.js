@@ -1,3 +1,5 @@
+import { DEFAULT_COUNTRY } from "./data"
+
 export const mapParticipantToForm = (participant) => ({
     participant: participant._id ?? participant.id ?? "",
     name: participant.name ?? "",
@@ -55,4 +57,50 @@ export const emptyParticipantFields = {
             number: "",
         },
     },
+}
+
+export const createEmptyParticipantDraft = (country = DEFAULT_COUNTRY) => ({
+    ...emptyParticipantFields,
+    phone: {
+        country_code: country.code,
+        dialing_code: country.calling_code,
+        number: "",
+    },
+    whatsapp: {
+        country_code: country.code,
+        dialing_code: country.calling_code,
+        number: "",
+    },
+    emergency_contact: {
+        name: "",
+        relation: "",
+        phone: {
+            country_code: country.code,
+            dialing_code: country.calling_code,
+            number: "",
+        },
+    },
+})
+
+export const getParticipantKey = (participant) =>
+    participant.participant || participant.local_id || ""
+
+export const createRosterEntry = (fields, is_existing = false) => ({
+    ...fields,
+    is_existing,
+    local_id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+})
+
+export const mergeParticipants = (existing, incoming) => {
+    const keys = new Set(existing.map(getParticipantKey))
+    const merged = [...existing]
+
+    incoming.forEach((item) => {
+        const key = getParticipantKey(item)
+        if (!key || keys.has(key)) return
+        keys.add(key)
+        merged.push(item)
+    })
+
+    return merged
 }

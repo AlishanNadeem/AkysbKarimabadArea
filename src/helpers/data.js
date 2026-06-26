@@ -205,6 +205,117 @@ export const REGISTRATION_STATUSES = [
 ]
 
 export const PAYMENT_STATUSES = [
-    { value: "pending", label: "Pending" },
+    { value: "pending", label: "Unpaid" },
     { value: "paid", label: "Paid" },
+]
+
+export const MOCK_PARTICIPANTS = [
+    {
+        _id: "p1",
+        id: "p1",
+        name: "Ahmed Khan",
+        age: 22,
+        membership_id: "AK-1024",
+        jamatkhana: "Karimabad Jamatkhana",
+        phone: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3001234567",
+        },
+        whatsapp: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3001234567",
+        },
+        emergency_contact: {
+            name: "Fatima Khan",
+            relation: "Mother",
+            phone: {
+                country_code: "PK",
+                dialing_code: "+92",
+                number: "3009876543",
+            },
+        },
+    },
+    {
+        _id: "p2",
+        id: "p2",
+        name: "Sara Ali",
+        age: 18,
+        membership_id: "AK-2048",
+        jamatkhana: "Garden East Jamatkhana",
+        phone: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3215551234",
+        },
+        whatsapp: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3215551234",
+        },
+        emergency_contact: {
+            name: "Ali Raza",
+            relation: "Father",
+            phone: {
+                country_code: "PK",
+                dialing_code: "+92",
+                number: "3215559876",
+            },
+        },
+    },
+    {
+        _id: "p3",
+        id: "p3",
+        name: "Hassan Malik",
+        age: 25,
+        membership_id: "AK-3072",
+        jamatkhana: "Karimabad Jamatkhana",
+        phone: {
+            country_code: "US",
+            dialing_code: "+1",
+            number: "6468980885",
+        },
+        whatsapp: {
+            country_code: "US",
+            dialing_code: "+1",
+            number: "6468980885",
+        },
+        emergency_contact: {
+            name: "Amina Malik",
+            relation: "Sister",
+            phone: {
+                country_code: "US",
+                dialing_code: "+1",
+                number: "6468980999",
+            },
+        },
+    },
+    {
+        _id: "p4",
+        id: "p4",
+        name: "Omar Khan",
+        age: 19,
+        membership_id: "AK-1025",
+        jamatkhana: "Karimabad Jamatkhana",
+        phone: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3001234567",
+        },
+        whatsapp: {
+            country_code: "PK",
+            dialing_code: "+92",
+            number: "3001234567",
+        },
+        emergency_contact: {
+            name: "Fatima Khan",
+            relation: "Mother",
+            phone: {
+                country_code: "PK",
+                dialing_code: "+92",
+                number: "3009876543",
+            },
+        },
+    },
 ]
