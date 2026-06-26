@@ -4,11 +4,13 @@ import colors from "../../helpers/colors"
 import { heightPixel, widthPixel } from "../../helpers/metrics"
 import Text from "../Text"
 
-const SummaryRow = ({ label, value, highlight = false }) => {
+const SummaryRow = ({ label, value, highlight = false, last = false }) => {
     if (!value && value !== 0) return null
 
     return (
-        <View style={styles.row}>
+        <View style={[styles.row, {
+            borderBottomWidth: last ? 0 : heightPixel(1),
+        }]}>
             <Text size={13} color={colors.gray} style={styles.label}>{label}</Text>
             <Text
                 size={14}
@@ -31,7 +33,7 @@ const styles = StyleSheet.create({
         alignItems: "flex-start",
         gap: widthPixel(12),
         paddingVertical: heightPixel(8),
-        borderBottomWidth: heightPixel(1),
+
         borderBottomColor: colors.light_gray,
     },
     label: {

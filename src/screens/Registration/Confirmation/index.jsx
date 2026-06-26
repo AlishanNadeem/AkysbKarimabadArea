@@ -30,12 +30,13 @@ const Confirmation = () => {
                 </View>
 
                 <SummarySection title="Event Details">
-                    {values.event_summary.map((item) => (
+                    {values.event_summary.map((item, index) => (
                         <SummaryRow
                             key={item.label}
                             label={item.label}
                             value={item.value}
                             highlight={item.highlight}
+                            last={index === values.event_summary.length - 1 ? true : false}
                         />
                     ))}
                 </SummarySection>
@@ -43,7 +44,7 @@ const Confirmation = () => {
                 <SummarySection title={`Participants (${values.participants.length})`}>
                     {values.participants_summary.map((participant) => (
                         <View key={participant.title} style={styles.participant_block}>
-                            <Text size={14} weight="semibold" color={colors.light_primary}>
+                            <Text size={16} weight="bold" color={colors.light_primary}>
                                 {participant.title}
                             </Text>
                             {participant.rows.map((row) => (
@@ -158,15 +159,13 @@ const styles = StyleSheet.create({
     },
     participant_block: {
         paddingVertical: heightPixel(8),
-        borderBottomWidth: heightPixel(1),
+        // borderBottomWidth: heightPixel(1),
         borderBottomColor: colors.light_gray,
         gap: heightPixel(4),
     },
     payment_field: {
         paddingVertical: heightPixel(8),
         gap: heightPixel(8),
-        borderBottomWidth: heightPixel(1),
-        borderBottomColor: colors.light_gray,
     },
     options_row: {
         flexWrap: "wrap",
