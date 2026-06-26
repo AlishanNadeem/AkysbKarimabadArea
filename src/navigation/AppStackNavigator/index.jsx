@@ -5,7 +5,7 @@ import EditProfile from "../../screens/EditProfile"
 import Events from "../../screens/Events"
 import Home from "../../screens/Home"
 import ManageEvent from "../../screens/ManageEvent"
-import ManageRegistration from "../../screens/ManageRegistration"
+import RegistrationStackNavigator from "../RegistrationStackNavigator"
 import MyProfile from "../../screens/MyProfile"
 
 const Stack = createStackNavigator()
@@ -18,7 +18,7 @@ const AppStackNavigator = () => {
             <Stack.Screen name={ROUTES.MY_PROFILE} component={MyProfile} options={ROUTES_OPTIONS[ROUTES.MY_PROFILE]} />
 
             <Stack.Screen name={ROUTES.MANAGE_EVENT} component={ManageEvent} options={ROUTES_OPTIONS[ROUTES.MANAGE_EVENT]} />
-            <Stack.Screen name={ROUTES.MANAGE_REGISTRATION} component={ManageRegistration} options={ROUTES_OPTIONS[ROUTES.MANAGE_REGISTRATION]} />
+            <Stack.Screen name={ROUTES.MANAGE_REGISTRATION} component={RegistrationStackNavigator} options={ROUTES_OPTIONS[ROUTES.MANAGE_REGISTRATION]} />
 
             <Stack.Screen name={ROUTES.CHANGE_PASSWORD} component={ChangePassword} options={ROUTES_OPTIONS[ROUTES.CHANGE_PASSWORD]} />
             <Stack.Screen name={ROUTES.EDIT_PROFILE} component={EditProfile} options={ROUTES_OPTIONS[ROUTES.EDIT_PROFILE]} />
