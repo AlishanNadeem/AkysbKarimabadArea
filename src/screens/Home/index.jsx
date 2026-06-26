@@ -16,7 +16,6 @@ const Home = () => {
     return (
         <PrimaryLayout header scrollable background>
             <View style={styles.container}>
-
                 <View style={styles.greeting}>
                     <Row align="center" justify="space-between">
                         <Text size={14} color={colors.gray}>{values.greeting}</Text>
@@ -47,8 +46,8 @@ const Home = () => {
                             </Button>
                         </View>
                     </Row>
-                    <Button size="sm" onPress={functions.onMyRegistrations}>
-                        My Registrations
+                    <Button size="sm" onPress={functions.onNewRegistration}>
+                        New Registration
                     </Button>
                 </View>
 

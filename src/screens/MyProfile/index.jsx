@@ -16,47 +16,47 @@ const MyProfile = () => {
         <PrimaryLayout scrollable header background>
             <View style={styles.container}>
                 <View style={styles.icon_wrapper}>
-                    <Icon rounded={"full"} source={{ uri: values.user.image_url }} size={88} resize="cover" />
+                    <Icon rounded={"full"} source={{ uri: values?.user?.image_url }} size={88} resize="cover" />
                 </View>
                 <Input
                     label={"Name"}
                     placeholder={"Enter Name"}
-                    value={values.user.name}
+                    value={values?.user?.name}
                     disabled
                 />
                 <PhoneInput
                     label="Phone Number"
-                    value={values.user.phone}
-                    default_country={{ code: values.user.country_code, calling_code: values.user.dialing_code }}
+                    value={values?.user?.phone}
+                    default_country={{ code: values?.user?.country_code, calling_code: values?.user?.dialing_code }}
                     disabled
                 />
                 <Input
                     label={"Email"}
                     placeholder={"Enter Email"}
-                    value={values.user.email}
+                    value={values?.user?.email}
                     disabled
                 />
                 {
-                    values.user?.date_of_birth &&
+                    values?.user?.date_of_birth &&
                     <DateTimeInput
                         label="Date of Birth"
                         placeholder={"Enter date of birth"}
-                        value={values.user?.date_of_birth}
+                        value={values?.user?.date_of_birth}
                         disabled
                     />
                 }
                 {
-                    values.user?.emergency_notes &&
+                    values?.user?.emergency_notes &&
                     <Input
                         type="textarea"
                         label={"Emergency Notes"}
                         placeholder="Enter here"
-                        value={values.user.emergency_notes}
+                        value={values?.user?.emergency_notes}
                         disabled
                     />
                 }
-                <Button onPress={functions.onEditProfile}>Edit Profile</Button>
-                <Button type="secondary" onPress={functions.onChangePassword}>Change Password</Button>
+                <Button onPress={functions?.onEditProfile}>Edit Profile</Button>
+                <Button type="secondary" onPress={functions?.onChangePassword}>Change Password</Button>
             </View>
         </PrimaryLayout>
     )

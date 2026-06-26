@@ -19,7 +19,7 @@ const useHomeController = () => {
         navigate(ROUTES.EVENTS)
     }, [])
 
-    const onMyRegistrations = useCallback(() => {
+    const onNewRegistration = useCallback(() => {
         navigate(ROUTES.MANAGE_REGISTRATION)
     }, [])
 
@@ -39,7 +39,7 @@ const useHomeController = () => {
         functions: {
             onCreateEvent,
             onBrowseEvents,
-            onMyRegistrations,
+            onNewRegistration,
             onEditEvent,
         },
     }
