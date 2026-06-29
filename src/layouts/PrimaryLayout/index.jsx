@@ -71,7 +71,7 @@ const PrimaryLayout = ({ children, background = false, padding_horizontal = true
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.primary
+        backgroundColor: colors.surface
     },
     content: {
         flex: 1,
