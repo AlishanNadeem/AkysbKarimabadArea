@@ -24,7 +24,7 @@ const BUTTON_TYPES = {
     secondary: {
         background: [colors.white, colors.white],
         color: colors.dark_primary,
-        border_color: colors.transparent,
+        border_color: colors.dark_primary,
     },
     muted: {
         background: [colors.lightest_white, colors.lightest_white],

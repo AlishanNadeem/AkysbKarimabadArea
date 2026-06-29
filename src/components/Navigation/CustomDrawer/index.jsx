@@ -87,24 +87,26 @@ const CustomDrawer = (props) => {
     return (
         <View style={styles.container}>
             <BackgroundWatermark />
+            <View style={styles.drawer_header}>
+                <Row style={styles.header} align="center">
+                    <Row gap={9} align="center" style={{ width: "auto", flex: 1 }}>
+                        <Icon size={89} source={{ uri: user?.image_url }} rounded={"full"} border={colors.white} resize="cover" />
+                        <View style={{ gap: heightPixel(4) }}>
+                            <Text size={20} color={colors.white}>{user?.name}</Text>
+                            <Text size={14} color={colors.white}>{user?.email}</Text>
+                        </View>
+                    </Row>
+                    <Icon source={images.arrow_right} size={24} onPress={closeDrawer} />
+                </Row>
+            </View>
             <DrawerContentScrollView
                 contentContainerStyle={styles.scroll}
                 showsVerticalScrollIndicator={false}
             >
-                <Row style={styles.header} align="center" >
-                    <Row gap={9} align="center" style={{ width: "auto", flex: 1 }}>
-                        <Icon size={89} source={{ uri: user?.image_url }} rounded={"full"} border={colors.white} resize="cover" />
-                        <View style={{ gap: heightPixel(4) }}>
-                            <Text size={20}>{user?.name}</Text>
-                            <Text size={14}>{user?.email}</Text>
-                        </View>
-                    </Row>
-                    <Icon source={images.close} rounded={"full"} space background={colors.danger} size={40} onPress={closeDrawer} />
-                </Row>
                 <View>
                     {
                         DRAWER.map(item => (
-                            <Row align="center" justify="space-between" onPress={() => onPressItem(item)} key={item.label} style={{ borderBottomWidth: heightPixel(1), borderBottomColor: colors.light_primary, paddingVertical: heightPixel(24) }}>
+                            <Row align="center" justify="space-between" onPress={() => onPressItem(item)} key={item.label} style={{ borderBottomWidth: heightPixel(1), borderBottomColor: colors.border, paddingVertical: heightPixel(24) }}>
                                 <Row align="center" gap={8} style={{ width: "auto" }}>
                                     {item?.icon && <Icon source={item.icon} size={24} color={colors.black} />}
                                     <Text size={16}>{item.label}</Text>
@@ -122,13 +124,20 @@ const CustomDrawer = (props) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: colors.primary
+        backgroundColor: colors.surface,
+    },
+    drawer_header: {
+        backgroundColor: colors.light_primary,
+        paddingHorizontal: GLOBAL_HORIZONTAL_PADDING + 3,
+        paddingTop: heightPixel(52),
+        paddingBottom: heightPixel(24),
     },
     scroll: {
         paddingStart: GLOBAL_HORIZONTAL_PADDING + 3,
         paddingEnd: GLOBAL_HORIZONTAL_PADDING + 3,
         flexGrow: 1,
-        gap: heightPixel(36)
+        gap: heightPixel(36),
+        paddingTop: heightPixel(8),
     },
     header: {
         width: "auto"

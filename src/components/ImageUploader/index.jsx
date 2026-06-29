@@ -28,7 +28,7 @@ const ImageUploader = ({ label, required, onPress, onRemove, image }) => {
 
             {image &&
                 <View style={styles.preview_container}>
-                    <Icon source={image} rounded={"quarter"} size={100} resize="cover" />
+                    <Icon source={image} rounded={"quarter"} size={150} resize="cover" />
                     <View style={styles.remove} >
                         <Icon source={images.close} size={26} color={colors.white} rounded={"full"} space background={colors.dark_primary} onPress={onRemove} />
                     </View>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         gap: heightPixel(4),
     },
     preview_container: {
-        alignSelf: "flex-start",
+        alignSelf: "center",
     },
     remove: {
         position: "absolute",

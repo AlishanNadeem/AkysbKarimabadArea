@@ -14,8 +14,8 @@ const HeaderTitle = ({ title, type = "primary" }) => {
 
     if (is_primary) {
         return (
-            <View style={{ paddingLeft: GLOBAL_HORIZONTAL_PADDING / 2 }}>
-                <Text size={20} weight="semibold">{title}</Text>
+            <View style={{ paddingLeft: GLOBAL_HORIZONTAL_PADDING / 4 }}>
+                <Text size={24} weight="bold">{title}</Text>
             </View>
         )
     }

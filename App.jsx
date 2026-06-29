@@ -36,10 +36,12 @@ const AppContent = () => {
   const app_config = useSelector(selectAppConfig)
 
   useEffect(() => {
-    if (navigation_ready && isSuccess) {
+    // if (navigation_ready && isSuccess) {
+    setTimeout(() => {
       BootSplash.hide({ fade: true })
       checkVersion()
-    }
+    }, 2000)
+    // }
   }, [navigation_ready, isSuccess])
 
   useEffect(() => {
