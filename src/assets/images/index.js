@@ -23,6 +23,7 @@ const images = {
     clock: require("./clock.png"),
     siren: require("./siren.png"),
     arrow_right: require("./arrow_right.png"),
+    arrow_left: require("./arrow_left.png"),
     trash: require("./trash.png"),
     edit: require("./edit.png"),
     pin: require("./pin.png"),
