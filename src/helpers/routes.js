@@ -13,7 +13,7 @@ const screenOptionsWithTitle = (title, type = "primary") => ({
 })
 
 const HEADER_LEFT = {
-    back: () => <HeaderLeft icon={images.back} onPress={goBack} type="secondary" />,
+    back: () => <HeaderLeft icon={images.arrow_left} onPress={goBack} type="secondary" size={32} />,
     drawer: () => <HeaderLeft icon={images.drawer} onPress={openDrawer} />,
     none: null,
 }
@@ -90,7 +90,8 @@ export const ROUTES_OPTIONS = {
     },
 
     [ROUTES.EVENTS]: {
-        headerShown: false,
+        ...screenOptionsWithTitle("Events"),
+        headerLeft: HEADER_LEFT.back,
     },
 
     [ROUTES.MY_PROFILE]: {
@@ -138,6 +139,6 @@ export const GLOBAL_HEADER_OPTIONS = {
     headerBackButtonVisible: false,
     headerLeftContainerStyle: { paddingLeft: GLOBAL_HORIZONTAL_PADDING },
     headerRightContainerStyle: { paddingRight: GLOBAL_HORIZONTAL_PADDING },
-    headerStyle: { height: HEADER_HEIGHT },
+    headerStyle: { height: HEADER_HEIGHT, },
     // animation: "slide_from_right",
 }

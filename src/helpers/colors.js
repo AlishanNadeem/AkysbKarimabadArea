@@ -22,7 +22,14 @@ const colors = {
     pinkish_red: "#FFCCD0",
     danger: "#F20026",
     red: "#FF1744",
-    shine: ["transparent", "rgba(255,255,255,0.3)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.3)", "transparent"]
+    shine: ["transparent", "rgba(255,255,255,0.3)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.3)", "transparent"],
+    // Semantic derived tokens
+    surface: "#F2FBFD",         // subtle teal-tinted screen background
+    card: "#FFFFFF",            // explicit card background
+    border: "#D4EEF3",          // teal-tinted border
+    primary_10: "#E0F5FA",      // light_primary at ~10% — used for published badge
+    dark_primary_10: "#EEFAE4", // dark_primary at ~10% — used for completed badge
+    text_primary: "#0D1B1E",    // near-black for primary text (fixes missing token)
 }
 
 export default colors
