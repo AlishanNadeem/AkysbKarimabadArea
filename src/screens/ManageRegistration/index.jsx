@@ -24,7 +24,7 @@ const ManageRegistration = () => {
             <KeyboardAvoidingWrapper>
                 <View style={styles.container}>
 
-                    <Text size={19} weight="semibold">Participant Information</Text>
+                    <Text size={18} weight="semibold">Participant Info.</Text>
 
                     <PhoneInput
                         required
