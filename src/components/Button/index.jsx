@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../helpers/colors';
-import { heightPixel, widthPixel } from '../../helpers/metrics';
+import { heightPixel, SHADOW, widthPixel } from '../../helpers/metrics';
 import { global_styles } from '../../helpers/styles';
 import Icon from '../Icon';
 import Row from '../Row';
@@ -111,5 +111,6 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRadius: heightPixel(12),
         borderWidth: heightPixel(1),
+        ...SHADOW.sm,
     },
 });
