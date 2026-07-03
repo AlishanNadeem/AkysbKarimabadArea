@@ -45,6 +45,15 @@ export const ROUTES = {
     MANAGE_EVENT: "ManageEvent",
     MANAGE_REGISTRATION: "ManageRegistration",
 
+    REGISTRATION_SELECT_EVENT: "RegistrationSelectEvent",
+    REGISTRATION_PARTICIPANT_INFO: "RegistrationParticipantInfo",
+    REGISTRATION_CONFIRMATION: "RegistrationConfirmation",
+
+    VIEW_REGISTRATIONS: "ViewRegistrations",
+    VIEW_REGISTRATIONS_SELECT_EVENT: "ViewRegistrationsSelectEvent",
+    VIEW_REGISTRATIONS_LIST: "ViewRegistrationsList",
+    VIEW_REGISTRATION_DETAIL: "ViewRegistrationDetail",
+
     CONTACT_US: "ContactUs",
     CHANGE_PASSWORD: "ChangePassword",
     EDIT_PROFILE: "EditProfile",
@@ -104,7 +113,39 @@ export const ROUTES_OPTIONS = {
     },
 
     [ROUTES.MANAGE_REGISTRATION]: {
-        ...screenOptionsWithTitle("Event Registration"),
+        headerShown: false,
+    },
+
+    [ROUTES.REGISTRATION_SELECT_EVENT]: {
+        ...screenOptionsWithTitle("Select Event"),
+        headerLeft: HEADER_LEFT.back,
+    },
+
+    [ROUTES.REGISTRATION_PARTICIPANT_INFO]: {
+        ...screenOptionsWithTitle("Participant Registration"),
+        headerLeft: HEADER_LEFT.back,
+    },
+
+    [ROUTES.REGISTRATION_CONFIRMATION]: {
+        ...screenOptionsWithTitle("Confirmation"),
+        headerLeft: HEADER_LEFT.back,
+    },
+
+    [ROUTES.VIEW_REGISTRATIONS]: {
+        ...screenOptionsWithTitle("View Registrations"),
+        headerLeft: HEADER_LEFT.back,
+    },
+
+    [ROUTES.VIEW_REGISTRATIONS_SELECT_EVENT]: {
+        headerShown: false,
+    },
+
+    [ROUTES.VIEW_REGISTRATIONS_LIST]: {
+        headerShown: false,
+    },
+
+    [ROUTES.VIEW_REGISTRATION_DETAIL]: {
+        ...screenOptionsWithTitle("Registration Detail"),
         headerLeft: HEADER_LEFT.back,
     },
 

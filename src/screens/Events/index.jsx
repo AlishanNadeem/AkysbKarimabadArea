@@ -2,6 +2,7 @@ import { ActivityIndicator, StyleSheet, View } from "react-native"
 import Button from "../../components/Button"
 import EventCard from "../../components/EventCard"
 import FlatList from "../../components/FlatList"
+import Input from "../../components/Input"
 import colors from "../../helpers/colors"
 import { heightPixel } from "../../helpers/metrics"
 import PrimaryLayout from "../../layouts/PrimaryLayout"
@@ -15,14 +16,21 @@ const Events = () => {
         <PrimaryLayout header background>
             <View style={styles.container}>
                 <Button onPress={functions.onCreate}>Create New Event</Button>
+                <Input
+                    placeholder="Search ..."
+                    value={values.search}
+                    onChangeText={functions.onSearchChange}
+                />
                 <FlatList
                     data={values.data}
                     separator={12}
                     refreshing={values.refreshing}
                     onRefresh={functions.onRefresh}
                     empty={{
-                        title: "No Events",
-                        description: "There are no events yet. Create one to get started.",
+                        title: values.has_search ? "No Results" : "No Events",
+                        description: values.has_search
+                            ? "No events match your search."
+                            : "There are no events yet. Create one to get started.",
                     }}
                     renderItem={({ item }) => (
                         <EventCard

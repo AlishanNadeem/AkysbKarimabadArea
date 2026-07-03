@@ -11,7 +11,7 @@ const HomeStatCard = ({ data }) => {
 
     return (
         <View style={styles.container}>
-            <Icon source={icon} size={24} color={colors.dark_gray} />
+            <Icon source={icon} size={24} color={colors.light_primary} />
             <Text size={24} weight="bold">{value}</Text>
             <Text size={13} color={colors.gray}>{label}</Text>
         </View>

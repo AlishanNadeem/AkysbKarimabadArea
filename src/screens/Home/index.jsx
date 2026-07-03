@@ -49,6 +49,9 @@ const Home = () => {
                     <Button size="sm" onPress={functions.onNewRegistration}>
                         New Registration
                     </Button>
+                    <Button size="sm" type="primary" onPress={functions.onViewRegistrations}>
+                        View Registrations
+                    </Button>
                 </View>
 
                 <View style={styles.section}>
