@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react"
 import { Animated, Image, Modal, StyleSheet, View } from "react-native"
+import LinearGradient from "react-native-linear-gradient"
 import images from "../../assets/images"
 import colors from "../../helpers/colors"
 import { GLOBAL_HORIZONTAL_PADDING, heightPixel, SCREEN_HEIGHT, SCREEN_WIDTH, widthPixel } from "../../helpers/metrics"
@@ -28,9 +29,16 @@ const GlobalModal = ({ visible, type, title, button_text = "Ok", message, onOk, 
             <View style={styles.overlay}>
                 <Image source={images.logo} style={styles.watermark} />
                 <Animated.View style={[styles.container, { transform: [{ scale: scale_animation }] }]}>
-                    <Icon source={type === "info" ? images.check : images.info_inverse} size={47} background={colors.dark_primary} rounded={"full"} space color={colors.white} />
+                    <LinearGradient
+                        colors={colors.gradient_primary}
+                        start={{ x: 0, y: 0 }}
+                        end={{ x: 1, y: 0 }}
+                        style={styles.icon_gradient}
+                    >
+                        <Icon source={type === "info" ? images.check : images.info_inverse} size={28} color={colors.white} />
+                    </LinearGradient>
                     {title && <Text size={26} weight="bold" align="center" color={colors.black}>{title}</Text>}
-                    {message && <Text size={16} align="center" color={colors.black}>{message}</Text>}
+                    {message && <Text size={16} align="center" color={colors.text_secondary}>{message}</Text>}
                     <View style={styles.row}>
                         {
                             type === "info" ?
@@ -56,11 +64,13 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingHorizontal: GLOBAL_HORIZONTAL_PADDING * 2,
-        backgroundColor: colors.primary
+        backgroundColor: colors.screen_background,
     },
     container: {
-        backgroundColor: colors.lightest_primary,
+        backgroundColor: colors.surface,
         borderRadius: heightPixel(20),
+        borderWidth: heightPixel(1),
+        borderColor: colors.border,
         paddingHorizontal: widthPixel(27),
         paddingVertical: heightPixel(34),
         minHeight: heightPixel(250),
@@ -68,6 +78,13 @@ const styles = StyleSheet.create({
         gap: heightPixel(16),
         justifyContent: "center",
         alignItems: "center"
+    },
+    icon_gradient: {
+        width: heightPixel(56),
+        height: heightPixel(56),
+        borderRadius: heightPixel(28),
+        alignItems: "center",
+        justifyContent: "center",
     },
     row: {
         width: "100%",
@@ -77,7 +94,7 @@ const styles = StyleSheet.create({
         position: "absolute",
         width: SCREEN_WIDTH,
         height: SCREEN_HEIGHT,
-        opacity: 0.06,
+        opacity: 0.04,
         zIndex: 0
     }
 })

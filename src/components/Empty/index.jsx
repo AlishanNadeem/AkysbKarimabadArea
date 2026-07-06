@@ -11,7 +11,7 @@ const Empty = ({
 }) => {
     return (
         <View style={styles.container}>
-            {icon && <Icon source={icon} size={64} color={colors.gray} />}
+            {icon && <Icon source={icon} size={64} color={colors.light_primary} />}
             <Text weight="semibold" size={18} style={styles.title}>{title}</Text>
             {description && <Text size={14} style={styles.description}>{description}</Text>}
         </View>
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         color: colors.text_primary,
     },
     description: {
-        color: colors.gray,
+        color: colors.text_secondary,
     },
 })
 

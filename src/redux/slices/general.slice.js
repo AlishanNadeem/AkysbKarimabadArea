@@ -3,7 +3,6 @@ import { generalApi } from "../apis/General"
 
 const initial = {
     first_launch: true,
-    alert_mode: null,
     app_config: null
 }
 
@@ -13,9 +12,6 @@ const generalSlice = createSlice({
     reducers: {
         completeOnboarding: (state) => {
             state.first_launch = false
-        },
-        setAlertMode: (state, action) => {
-            state.alert_mode = action.payload
         },
     },
     extraReducers: (builder) => {
@@ -29,5 +25,5 @@ const generalSlice = createSlice({
     }
 })
 
-export const { completeOnboarding, setAlertMode } = generalSlice.actions
+export const { completeOnboarding } = generalSlice.actions
 export default generalSlice.reducer

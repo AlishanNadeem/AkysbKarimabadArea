@@ -25,10 +25,8 @@ const HEADER_RIGHT = {
 
 export const NAVIGATORS = {
     AUTH_STACK: "AuthStackNavigator",
-    COMPLETE_PROFILE_STACK: "CompleteProfileStackNavigator",
     APP_DRAWER: "AppDrawerNavigator",
     APP_STACK: "AppStackNavigator",
-    BOTTOM: "BottomNavigator",
 }
 
 export const ROUTES = {
@@ -39,25 +37,19 @@ export const ROUTES = {
     FORGET_PASSWORD: "ForgetPassword",
     VERIFY_CODE: "VerifyCode",
     SET_PASSWORD: "SetPassword",
-    COMPLETE_PROFILE: "CompleteProfile",
 
     HOME: "Home",
-    CONFIGURE: "Configure",
-    CONTACTS: "Contacts",
+    EVENTS: "Events",
     MY_PROFILE: "MyProfile",
 
-    CHECKIN_SETTINGS: "CheckInSetting",
-    MANAGE_CONTACT: "ManageContact",
-    ALERT_DETAILS: "AlertDetails",
-    MAP: "Map",
-    DAILY_CHECK_IN: "DailyCheckIn",
+    MANAGE_EVENT: "ManageEvent",
+    MANAGE_REGISTRATION: "ManageRegistration",
 
-    SUBSCRIPTION_PLANS: "SubscriptionPlans",
+    REGISTRATION_SELECT_EVENT: "RegistrationSelectEvent",
+    REGISTRATION_PARTICIPANT_INFO: "RegistrationParticipantInfo",
+    REGISTRATION_CONFIRMATION: "RegistrationConfirmation",
 
     CONTACT_US: "ContactUs",
-    ABOUT_US: "AboutUs",
-    TERMS_AND_CONDITIONS: "TermsAndConditions",
-    PRIVACY_POLICY: "PrivacyPolicy",
     CHANGE_PASSWORD: "ChangePassword",
     EDIT_PROFILE: "EditProfile",
     NOTIFICATIONS: "Notifications",
@@ -65,12 +57,6 @@ export const ROUTES = {
 }
 
 export const ROUTES_OPTIONS = {
-
-    [NAVIGATORS.BOTTOM]: {
-        ...screenOptionsWithTitle(undefined, "secondary"),
-        headerLeft: HEADER_LEFT.drawer,
-        headerRight: HEADER_RIGHT.notifications
-    },
 
     [NAVIGATORS.APP_STACK]: {
         headerShown: false,
@@ -100,28 +86,14 @@ export const ROUTES_OPTIONS = {
         headerShown: false,
     },
 
-    [ROUTES.COMPLETE_PROFILE]: {
-        headerShown: false,
-    },
-
-    [ROUTES.SUBSCRIPTION_PLANS]: {
-        ...screenOptionsWithTitle("Subscription Plans"),
-        headerLeft: HEADER_LEFT.back,
-        in_drawer: true,
-        drawer_label: "Subscribed Platforms",
-    },
-
     [ROUTES.HOME]: {
-        headerShown: false,
+        ...screenOptionsWithTitle(undefined, "secondary"),
+        headerLeft: HEADER_LEFT.drawer,
         in_drawer: true,
         drawer_label: "Home",
     },
 
-    [ROUTES.CONFIGURE]: {
-        headerShown: false,
-    },
-
-    [ROUTES.CONTACTS]: {
+    [ROUTES.EVENTS]: {
         headerShown: false,
     },
 
@@ -129,51 +101,32 @@ export const ROUTES_OPTIONS = {
         headerShown: false,
     },
 
-    [ROUTES.CHECKIN_SETTINGS]: {
-        ...screenOptionsWithTitle("Check-in Settings"),
-        headerLeft: HEADER_LEFT.back,
-    },
-
-    [ROUTES.MANAGE_CONTACT]: {
+    [ROUTES.MANAGE_EVENT]: {
         ...screenOptionsWithTitle(),
         headerLeft: HEADER_LEFT.back,
     },
 
-    [ROUTES.ALERT_DETAILS]: {
-        ...screenOptionsWithTitle("SOS Alert Details"),
+    [ROUTES.MANAGE_REGISTRATION]: {
+        headerShown: false,
+    },
+
+    [ROUTES.REGISTRATION_SELECT_EVENT]: {
+        ...screenOptionsWithTitle("Event Registration"),
         headerLeft: HEADER_LEFT.back,
     },
 
-    [ROUTES.MAP]: {
-        ...screenOptionsWithTitle("Map"),
+    [ROUTES.REGISTRATION_PARTICIPANT_INFO]: {
+        ...screenOptionsWithTitle("Participant Info"),
         headerLeft: HEADER_LEFT.back,
     },
 
-    [ROUTES.DAILY_CHECK_IN]: {
-        ...screenOptionsWithTitle("Daily Check-in"),
+    [ROUTES.REGISTRATION_CONFIRMATION]: {
+        ...screenOptionsWithTitle("Confirm Registration"),
         headerLeft: HEADER_LEFT.back,
     },
 
     [ROUTES.CONTACT_US]: {
         ...screenOptionsWithTitle("Contact Us"),
-        headerLeft: HEADER_LEFT.drawer,
-        headerRight: HEADER_RIGHT.notifications,
-    },
-
-    [ROUTES.TERMS_AND_CONDITIONS]: {
-        ...screenOptionsWithTitle("Terms & Conditions"),
-        headerLeft: HEADER_LEFT.drawer,
-        headerRight: HEADER_RIGHT.notifications,
-    },
-
-    [ROUTES.ABOUT_US]: {
-        ...screenOptionsWithTitle("About Us"),
-        headerLeft: HEADER_LEFT.drawer,
-        headerRight: HEADER_RIGHT.notifications,
-    },
-
-    [ROUTES.PRIVACY_POLICY]: {
-        ...screenOptionsWithTitle("Privacy Policy"),
         headerLeft: HEADER_LEFT.drawer,
         headerRight: HEADER_RIGHT.notifications,
     },
@@ -199,7 +152,7 @@ export const GLOBAL_HEADER_OPTIONS = {
     headerShown: true,
     headerTitleAlign: "left",
     headerTransparent: true,
-    headerTintColor: colors.white,
+    headerTintColor: colors.black,
     headerBackButtonVisible: false,
     headerLeftContainerStyle: { paddingLeft: GLOBAL_HORIZONTAL_PADDING },
     headerRightContainerStyle: { paddingRight: GLOBAL_HORIZONTAL_PADDING },

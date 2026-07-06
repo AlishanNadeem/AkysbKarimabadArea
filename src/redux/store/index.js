@@ -6,6 +6,7 @@ import { baseApi } from "../apis/Base"
 import errorLogger from "../middlewares/error.middleware"
 import authReducer from "../slices/auth.slice"
 import generalReducer from "../slices/general.slice"
+import registrationReducer from "../slices/registration.slice"
 
 const persist_config = {
     key: "com.pixelgenesys.checkingup",
@@ -16,6 +17,7 @@ const persist_config = {
 const rootReducer = combineReducers({
     auth: authReducer,
     general: generalReducer,
+    registration: registrationReducer,
     [authApi.reducerPath]: authApi.reducer,
     [baseApi.reducerPath]: baseApi.reducer,
 })

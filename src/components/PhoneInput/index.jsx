@@ -9,16 +9,17 @@ import CountryPickerModal from "../CountryPickerModal"
 import Text from "../Text"
 import Touchable from "../Touchable"
 import { DEFAULT_COUNTRY } from "../../helpers/data"
+import InputLayout from "../../layouts/InputLayout"
 
 const getFlag = (code) => {
     return code
-        .toUpperCase()
+        ?.toUpperCase()
         .replace(/./g, char => String.fromCodePoint(127397 + char.charCodeAt()))
 }
 
 const getMaxLength = (code) => {
     try {
-        const example = getExampleNumber(code, examples)
+        const example = getExampleNumber(code ?? "", examples)
         if (!example) return 15
         const national = example.formatNational()
         return national.length
@@ -68,13 +69,13 @@ const PhoneInput = ({
 
         const digits = text.replace(/\D/g, "")
 
-        const formatter = new AsYouType(country.code)
+        const formatter = new AsYouType(country?.code ?? "")
         const formatted = formatter.input(digits)
 
         setDisplayValue(formatted)
         onChangeText(digits)
 
-    }, [country, onChangeText])
+    }, [country?.code, onChangeText])
 
     const handleSelectCountry = useCallback((selected) => {
         setCountry(selected)
@@ -86,79 +87,49 @@ const PhoneInput = ({
     }, [onChangeText, onChangeCountry])
 
     return (
-        <View style={styles.container}>
-            {label && (
-                <View style={styles.label}>
-                    <Text weight="semibold">
-                        {label} {required && <Text color="red">*</Text>}
-                    </Text>
+        <InputLayout
+            label={label}
+            required={required}
+            error={error}
+        >
+            <Touchable
+                style={styles.country_picker}
+                onPress={() => setModalVisible(true)}
+                disabled={disabled}
+            >
+                <View style={styles.flag_container}>
+                    <Text size={18}>{getFlag(country.code)}</Text>
                 </View>
-            )}
+                <Text color={colors.black} size={14} weight="semibold">{country.calling_code}</Text>
+            </Touchable>
 
-            <View style={styles.input_wrapper}>
-                <Touchable
-                    style={styles.country_picker}
-                    onPress={() => setModalVisible(true)}
-                    disabled={disabled}
-                >
-                    <View style={styles.flag_container}>
-                        <Text size={18}>{getFlag(country.code)}</Text>
-                    </View>
-                    <Text color={colors.white} size={14} weight="semibold">{country.calling_code}</Text>
-                </Touchable>
+            <View style={styles.divider} />
 
-                <View style={styles.divider} />
-
-                <TextInput
-                    value={displayValue}
-                    onChangeText={handleChangeText}
-                    placeholder="Enter phone number"
-                    placeholderTextColor={colors.white}
-                    keyboardType="phone-pad"
-                    allowFontScaling={false}
-                    cursorColor={colors.light_primary}
-                    style={styles.input}
-                    editable={!disabled}
-                    onBlur={onBlur}
-                    maxLength={getMaxLength(country.code)}
-                />
-            </View>
-
-            {error ? (
-                <Animated.Text style={[styles.error_text, { opacity: error_opacity }]}>
-                    {error}
-                </Animated.Text>
-            ) : null}
-
+            <TextInput
+                value={displayValue}
+                onChangeText={handleChangeText}
+                placeholder="Enter phone number"
+                placeholderTextColor={colors.gray}
+                keyboardType="phone-pad"
+                allowFontScaling={false}
+                cursorColor={colors.light_primary}
+                style={styles.input}
+                editable={!disabled}
+                onBlur={onBlur}
+                maxLength={getMaxLength(country.code)}
+            />
             <CountryPickerModal
                 visible={modal_visible}
                 onSelect={handleSelectCountry}
                 onClose={() => setModalVisible(false)}
             />
-        </View>
+        </InputLayout>
     )
 }
 
 export default memo(PhoneInput)
 
 const styles = StyleSheet.create({
-    container: {
-        width: "100%",
-    },
-    label: {
-        marginBottom: heightPixel(10),
-        paddingHorizontal: widthPixel(2),
-    },
-    input_wrapper: {
-        flexDirection: "row",
-        alignItems: "center",
-        paddingHorizontal: widthPixel(16),
-        height: heightPixel(56),
-        borderWidth: heightPixel(1.5),
-        borderColor: colors.light_primary,
-        borderRadius: heightPixel(100),
-        backgroundColor: colors.input_background,
-    },
     country_picker: {
         flexDirection: "row",
         alignItems: "center",
@@ -176,20 +147,13 @@ const styles = StyleSheet.create({
     divider: {
         width: heightPixel(1),
         height: "50%",
-        backgroundColor: colors.lightest_white,
+        backgroundColor: colors.gray,
         marginHorizontal: widthPixel(12),
     },
     input: {
         flex: 1,
         fontFamily: fonts.lexend.regular,
-        color: colors.white,
+        color: colors.black,
         fontSize: font(14),
-    },
-    error_text: {
-        color: "#FF4D4F",
-        fontSize: font(12),
-        fontFamily: fonts.lexend.regular,
-        marginTop: heightPixel(5),
-        marginLeft: widthPixel(10),
-    },
+    }
 })

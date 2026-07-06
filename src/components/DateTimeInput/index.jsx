@@ -40,12 +40,12 @@ const DateTimeInput = ({
         >
             <View style={styles.input}>
                 <Text
-                    color={colors.white}
+                    color={getDisplayValue() ? colors.black : colors.gray}
                 >
                     {getDisplayValue() || placeholder}
                 </Text>
             </View>
-            <Icon source={icon} size={24} color={colors.white} onPress={toggleOpen} />
+            <Icon source={icon} size={24} color={colors.black} onPress={toggleOpen} />
 
             <DatePicker
                 modal

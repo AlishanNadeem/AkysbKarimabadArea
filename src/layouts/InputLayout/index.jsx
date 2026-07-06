@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: widthPixel(16),
         height: heightPixel(56),
         borderWidth: heightPixel(1.5),
-        borderColor: colors.light_primary,
-        borderRadius: heightPixel(100),
+        borderColor: colors.border,
+        borderRadius: heightPixel(12),
         backgroundColor: colors.input_background
     },
     error_text: {

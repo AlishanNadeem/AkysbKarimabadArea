@@ -1,85 +1,113 @@
-import { StyleSheet, View } from "react-native"
-import images from "../../assets/images"
-import ActivityLogCard from "../../components/ActivityLogCard"
-import DailyCheckInCard from "../../components/DailyCheckInCard"
-import DashboardStatCard from "../../components/DashboardStatCard"
-import FlatList from "../../components/FlatList"
+import { ScrollView, StyleSheet, View } from "react-native"
+import Button from "../../components/Button"
+import EventCard from "../../components/EventCard"
+import HomeStatCard from "../../components/HomeStatCard"
 import Row from "../../components/Row"
-import SOSAlertCard from "../../components/SOSAlertCard"
 import Text from "../../components/Text"
 import colors from "../../helpers/colors"
-import { ACTIVITY_LOGS } from "../../helpers/data"
-import { getGreeting } from "../../helpers/general"
-import { heightPixel } from "../../helpers/metrics"
+import { heightPixel, widthPixel } from "../../helpers/metrics"
 import PrimaryLayout from "../../layouts/PrimaryLayout"
 import useHomeController from "./useHomeController"
-
 
 const Home = () => {
 
     const { values, functions } = useHomeController()
 
     return (
-        <PrimaryLayout header bottom_tab scrollable background>
+        <PrimaryLayout header scrollable background>
             <View style={styles.container}>
-                {
-                    values.alert_mode &&
-                    <SOSAlertCard
-                        onPress={functions.onAlert}
-                        data={{
-                            timestamp: "2026-04-23T17:15:00",
-                            ...(values.alert_mode === "user" ? { user: { name: "Max", relation: "Daughter" } } : {})
-                        }}
-                    />
-                }
-                <DailyCheckInCard
-                    data={{
-                        greeting: getGreeting(),
-                        description: "It's time for your daily wellness check-in. How are you feeling today?",
-                        progress: values.timer
-                    }}
-                    onPress={functions.onCheckIn}
-                />
+                <View style={styles.greeting}>
+                    <Row align="center" justify="space-between">
+                        <Text size={14} color={colors.text_secondary}>{values.greeting}</Text>
+                        <Text size={13} color={colors.text_muted}>{values.today_date}</Text>
+                    </Row>
+                    <Text size={24} weight="semibold">{values.user_name}</Text>
+                    {values.user_subtitle ? (
+                        <Text size={13} color={colors.text_secondary}>{values.user_subtitle}</Text>
+                    ) : null}
+                </View>
 
-
-                <Row gap={16}>
-                    <DashboardStatCard
-                        data={{
-                            label: "Checking Up",
-                            title: "Next Check-In",
-                            value: "5h 15m Remaining",
-                            progress: 70,
-                            icon: images.clock,
-                            background_color: colors.lightest_primary,
-                            icon_background: colors.dark_primary,
-                        }}
-                    />
-                    <DashboardStatCard
-                        data={{
-                            label: "Checking Up",
-                            title: "ICE Contacts",
-                            value: "4 Active Contacts",
-                            progress: 70,
-                            icon: images.shield,
-                            background_color: colors.yellowish_primary,
-                            icon_background: colors.light_primary,
-                        }}
-                    />
+                <Row gap={10}>
+                    {values.stats.map((item) => (
+                        <HomeStatCard key={item.id} data={item} />
+                    ))}
                 </Row>
-                <Text size={19} weight="semibold">Activity Log</Text>
-                <FlatList
-                    data={ACTIVITY_LOGS}
-                    renderItem={({ item }) => <ActivityLogCard data={item} />}
-                />
+
+                <View style={styles.actions}>
+                    <Row gap={10}>
+                        <View style={styles.action_button}>
+                            <Button size="sm" onPress={functions.onCreateEvent}>
+                                Create Event
+                            </Button>
+                        </View>
+                        <View style={styles.action_button}>
+                            <Button size="sm" onPress={functions.onBrowseEvents}>
+                                All Events
+                            </Button>
+                        </View>
+                    </Row>
+                    <Button size="sm" onPress={functions.onNewRegistration}>
+                        New Registration
+                    </Button>
+                </View>
+
+                <View style={styles.section}>
+                    <Row align="center" justify="space-between">
+                        <Text size={19} weight="semibold">Upcoming</Text>
+                        <Text size={14} color={colors.text_secondary} onPress={functions.onBrowseEvents}>
+                            View all
+                        </Text>
+                    </Row>
+
+                    <ScrollView
+                        horizontal
+                        showsHorizontalScrollIndicator={false}
+                        contentContainerStyle={styles.upcoming_list}
+                    >
+                        {values.upcoming_events.map((item, index) => (
+                            <View
+                                key={item._id}
+                                style={[styles.event_card, index > 0 && styles.event_card_spacing]}
+                            >
+                                <EventCard
+                                    data={item}
+                                    onEdit={functions.onEditEvent}
+                                />
+                            </View>
+                        ))}
+                    </ScrollView>
+                </View>
+
             </View>
         </PrimaryLayout>
     )
 }
 
+export default Home
+
 const styles = StyleSheet.create({
     container: {
-        gap: heightPixel(16)
-    }
+        gap: heightPixel(20),
+    },
+    greeting: {
+        gap: heightPixel(4),
+    },
+    actions: {
+        gap: heightPixel(10),
+    },
+    action_button: {
+        flex: 1,
+    },
+    section: {
+        gap: heightPixel(12),
+    },
+    upcoming_list: {
+        paddingVertical: heightPixel(2),
+    },
+    event_card: {
+        width: widthPixel(280),
+    },
+    event_card_spacing: {
+        marginLeft: widthPixel(12),
+    },
 })
-
-export default Home
