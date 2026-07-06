@@ -26,8 +26,8 @@ const HeaderTitle = ({ title, type = "primary" }) => {
         <Row justify="center" gap={16} style={{ width: "auto", paddingLeft: widthPixel(17) }}>
             <Icon size={46} rounded={"full"} source={{ uri: user?.image_url } ?? images.avatar_one} resize="cover" />
             <View>
-                <Text color={colors.text_secondary}>Hi, {user?.name}</Text>
-                <Text size={19} weight="semibold" color={colors.text_primary}>Welcome Back</Text>
+                {/* <Text color={colors.text_secondary}>Hi, {user?.name}</Text> */}
+                <Text size={22} weight="bold" color={colors.text_primary}>Welcome Back</Text>
             </View>
         </Row>
     )

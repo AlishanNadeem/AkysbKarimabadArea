@@ -31,6 +31,7 @@ const images = {
     calendar_animated: require("./calendar_animated.png"),
     calendar: require("./calendar.png"),
     down_arrow: require("./down_arrow.png"),
+    hi_icon: require("./hi_icon.png"),
 
     // Drawer
     drawer_logout: require("./drawer_logout.png"),

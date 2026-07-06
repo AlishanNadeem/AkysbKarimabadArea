@@ -8,6 +8,8 @@ import colors from "../../helpers/colors"
 import { heightPixel, widthPixel } from "../../helpers/metrics"
 import PrimaryLayout from "../../layouts/PrimaryLayout"
 import useHomeController from "./useHomeController"
+import Icon from "../../components/Icon"
+import images from "../../assets/images"
 
 const Home = () => {
 
@@ -18,10 +20,15 @@ const Home = () => {
             <View style={styles.container}>
                 <View style={styles.greeting}>
                     <Row align="center" justify="space-between">
-                        <Text size={14} color={colors.text_secondary}>{values.greeting}</Text>
+                        <Row align="center" gap={4} style={{
+                            width: '50%',
+                        }}>
+                            <Text size={18} weight="semibold" color={colors.text_secondary}>{values.greeting}</Text>
+                            <Icon source={images.hi_icon} size={24} color={colors.orange} />
+                        </Row>
                         <Text size={13} color={colors.text_muted}>{values.today_date}</Text>
                     </Row>
-                    <Text size={24} weight="semibold">{values.user_name}</Text>
+                    <Text size={24} weight="bold">{values.user_name}</Text>
                     {values.user_subtitle ? (
                         <Text size={13} color={colors.text_secondary}>{values.user_subtitle}</Text>
                     ) : null}
@@ -83,7 +90,7 @@ const Home = () => {
                 </View>
 
             </View>
-        </PrimaryLayout>
+        </PrimaryLayout >
     )
 }
 

@@ -407,9 +407,9 @@ export const MOCK_REGISTRATIONS = [
         ],
         amount_paid: 500,
         payment: {
-            status: "pending",
-            method: "",
-            notes: "",
+            status: "paid",
+            method: "cash",
+            notes: "Cancelled after payment",
             amount_paid: 500,
         },
     },

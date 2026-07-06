@@ -1,7 +1,5 @@
-import { useFormik } from "formik"
 import { useCallback, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import * as Yup from "yup"
 import { DEFAULT_COUNTRY } from "../../../helpers/data"
 import { navigate } from "../../../helpers/navigation"
 import {
@@ -18,44 +16,15 @@ import {
     selectRegistrationEvent,
     selectRegistrationParticipants,
 } from "../../../redux/selectors"
-import { setRegistrationParticipants } from "../../../redux/slices/registration.slice"
+import {
+    setParticipantDraft,
+    setRegistrationParticipants,
+} from "../../../redux/slices/registration.slice"
 
 const SEARCH_MODES = [
     { value: "phone", label: "Contact Number" },
     { value: "ysb_id", label: "YSB ID" },
 ]
-
-const draft_schema = Yup.object().shape({
-    name: Yup.string()
-        .min(2, "Name must be at least 2 characters")
-        .max(100, "Name cannot exceed 100 characters")
-        .required("Full name is required"),
-    age: Yup.number()
-        .transform((value, original) => (original === "" || original == null ? undefined : Number(original)))
-        .typeError("Age is required")
-        .min(0, "Age must be at least 0")
-        .max(120, "Age cannot exceed 120")
-        .required("Age is required"),
-    phone: Yup.object({
-        number: Yup.string()
-            .min(7, "Phone number must be at least 7 digits")
-            .required("Contact number is required"),
-    }),
-    jamatkhana: Yup.string()
-        .max(100, "Jamatkhana cannot exceed 100 characters")
-        .optional(),
-    membership_id: Yup.string().optional(),
-    whatsapp: Yup.object({
-        number: Yup.string().optional(),
-    }).optional(),
-    emergency_contact: Yup.object({
-        name: Yup.string().max(100).optional(),
-        relation: Yup.string().max(50).optional(),
-        phone: Yup.object({
-            number: Yup.string().optional(),
-        }).optional(),
-    }).optional(),
-})
 
 const useParticipantInfoController = () => {
 
@@ -72,17 +41,9 @@ const useParticipantInfoController = () => {
     const [ysb_id_search, setYsbIdSearch] = useState("")
     const [search_results, setSearchResults] = useState([])
     const [checked_result_ids, setCheckedResultIds] = useState([])
-    const [has_searched, setHasSearched] = useState(false)
     const [participants, setParticipants] = useState(saved_participants)
 
     const [triggerSearch, { isFetching: is_searching }] = useLazySearchParticipantQuery()
-
-    const draft_formik = useFormik({
-        initialValues: createEmptyParticipantDraft(),
-        validationSchema: draft_schema,
-        enableReinitialize: false,
-        onSubmit: () => {},
-    })
 
     useEffect(() => {
         if (!event) {
@@ -90,7 +51,11 @@ const useParticipantInfoController = () => {
         }
     }, [event])
 
-    const resetDraftForm = useCallback((prefill_phone) => {
+    useEffect(() => {
+        setParticipants(saved_participants)
+    }, [saved_participants])
+
+    const buildDraftPrefill = useCallback((prefill_phone, prefill_membership_id) => {
         const draft = createEmptyParticipantDraft({
             code: phone_search.country_code,
             calling_code: phone_search.dialing_code,
@@ -101,15 +66,23 @@ const useParticipantInfoController = () => {
             draft.whatsapp.number = prefill_phone
         }
 
-        draft_formik.resetForm({ values: draft })
-    }, [draft_formik, phone_search.country_code, phone_search.dialing_code])
+        if (prefill_membership_id) {
+            draft.membership_id = prefill_membership_id
+        }
+
+        return draft
+    }, [phone_search.country_code, phone_search.dialing_code])
+
+    const goToParticipantDetails = useCallback((draft) => {
+        dispatch(setParticipantDraft(draft))
+        navigate(ROUTES.MANAGE_REGISTRATION, { screen: ROUTES.REGISTRATION_PARTICIPANT_DETAILS })
+    }, [dispatch])
 
     const runSearch = useCallback(async () => {
         if (search_mode === "phone") {
             const number = phone_search.number?.trim()
             if (!number || number.length < 7) return
 
-            setHasSearched(true)
             setCheckedResultIds([])
 
             const result = await triggerSearch({
@@ -122,13 +95,12 @@ const useParticipantInfoController = () => {
             setSearchResults(results)
 
             if (!results.length) {
-                resetDraftForm(number)
+                goToParticipantDetails(buildDraftPrefill(number))
             }
         } else {
             const membership_id = ysb_id_search?.trim()
             if (!membership_id || membership_id.length < 3) return
 
-            setHasSearched(true)
             setCheckedResultIds([])
 
             const result = await triggerSearch({
@@ -140,16 +112,15 @@ const useParticipantInfoController = () => {
             setSearchResults(results)
 
             if (!results.length) {
-                resetDraftForm()
+                goToParticipantDetails(buildDraftPrefill(null, membership_id))
             }
         }
-    }, [search_mode, phone_search, ysb_id_search, triggerSearch, resetDraftForm])
+    }, [search_mode, phone_search, ysb_id_search, triggerSearch, goToParticipantDetails, buildDraftPrefill])
 
     const onSearchPhoneChange = useCallback((number) => {
         setPhoneSearch((prev) => ({ ...prev, number }))
         setSearchResults([])
         setCheckedResultIds([])
-        setHasSearched(false)
     }, [])
 
     const onSearchCountryChange = useCallback((country) => {
@@ -160,21 +131,18 @@ const useParticipantInfoController = () => {
         }))
         setSearchResults([])
         setCheckedResultIds([])
-        setHasSearched(false)
     }, [])
 
     const onYsbIdChange = useCallback((value) => {
         setYsbIdSearch(value)
         setSearchResults([])
         setCheckedResultIds([])
-        setHasSearched(false)
     }, [])
 
     const onSearchModeChange = useCallback((mode) => {
         setSearchMode(mode)
         setSearchResults([])
         setCheckedResultIds([])
-        setHasSearched(false)
     }, [])
 
     const toggleResultCheck = useCallback((id) => {
@@ -190,30 +158,18 @@ const useParticipantInfoController = () => {
 
         if (!selected.length) return
 
-        setParticipants((prev) => mergeParticipants(prev, selected))
+        const updated = mergeParticipants(participants, selected)
+        setParticipants(updated)
+        dispatch(setRegistrationParticipants(updated))
         setCheckedResultIds([])
-    }, [search_results, checked_result_ids])
-
-    const addDraftParticipant = useCallback(async () => {
-        const errors = await draft_formik.validateForm()
-        draft_formik.setTouched({
-            name: true,
-            age: true,
-            phone: { number: true },
-            jamatkhana: true,
-            membership_id: true,
-        })
-
-        if (Object.keys(errors).length) return
-
-        const entry = createRosterEntry(draft_formik.values, false)
-        setParticipants((prev) => mergeParticipants(prev, [entry]))
-        resetDraftForm()
-    }, [draft_formik, resetDraftForm])
+        setSearchResults([])
+    }, [search_results, checked_result_ids, participants, dispatch])
 
     const removeParticipant = useCallback((local_id) => {
-        setParticipants((prev) => prev.filter((item) => item.local_id !== local_id))
-    }, [])
+        const updated = participants.filter((item) => item.local_id !== local_id)
+        setParticipants(updated)
+        dispatch(setRegistrationParticipants(updated))
+    }, [participants, dispatch])
 
     const onContinue = useCallback(() => {
         if (!participants.length) return
@@ -221,33 +177,16 @@ const useParticipantInfoController = () => {
         navigate(ROUTES.MANAGE_REGISTRATION, { screen: ROUTES.REGISTRATION_CONFIRMATION })
     }, [participants, dispatch])
 
-    const onWhatsappPhoneChange = useCallback((number) => {
-        draft_formik.setFieldValue("whatsapp.number", number)
-    }, [draft_formik])
-
-    const onWhatsappCountryChange = useCallback((country) => {
-        draft_formik.setFieldValue("whatsapp.country_code", country.code)
-        draft_formik.setFieldValue("whatsapp.dialing_code", country.calling_code)
-    }, [draft_formik])
-
-    const onEmergencyPhoneChange = useCallback((number) => {
-        draft_formik.setFieldValue("emergency_contact.phone.number", number)
-    }, [draft_formik])
-
-    const onEmergencyCountryChange = useCallback((country) => {
-        draft_formik.setFieldValue("emergency_contact.phone.country_code", country.code)
-        draft_formik.setFieldValue("emergency_contact.phone.dialing_code", country.calling_code)
-    }, [draft_formik])
-
-    const show_no_results = has_searched
-        && !is_searching
-        && !search_results.length
+    const onRegisterNew = useCallback(() => {
+        const prefill_phone = search_mode === "phone" ? phone_search.number?.trim() : null
+        const prefill_membership_id = search_mode === "ysb_id" ? ysb_id_search?.trim() : null
+        goToParticipantDetails(buildDraftPrefill(prefill_phone, prefill_membership_id))
+    }, [search_mode, phone_search, ysb_id_search, goToParticipantDetails, buildDraftPrefill])
 
     const has_checked_results = checked_result_ids.length > 0
 
     return {
         values: {
-            draft_formik,
             event,
             search_mode,
             search_modes: SEARCH_MODES,
@@ -256,8 +195,6 @@ const useParticipantInfoController = () => {
             search_results,
             checked_result_ids,
             is_searching,
-            show_no_results,
-            has_searched,
             participants,
             has_checked_results,
         },
@@ -269,13 +206,9 @@ const useParticipantInfoController = () => {
             runSearch,
             toggleResultCheck,
             addSelectedFromSearch,
-            addDraftParticipant,
             removeParticipant,
             onContinue,
-            onWhatsappPhoneChange,
-            onWhatsappCountryChange,
-            onEmergencyPhoneChange,
-            onEmergencyCountryChange,
+            onRegisterNew,
             formatParticipantPhone,
             getParticipantKey,
         },

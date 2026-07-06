@@ -47,6 +47,7 @@ export const ROUTES = {
 
     REGISTRATION_SELECT_EVENT: "RegistrationSelectEvent",
     REGISTRATION_PARTICIPANT_INFO: "RegistrationParticipantInfo",
+    REGISTRATION_PARTICIPANT_DETAILS: "RegistrationParticipantDetails",
     REGISTRATION_CONFIRMATION: "RegistrationConfirmation",
 
     VIEW_REGISTRATIONS: "ViewRegistrations",
@@ -123,6 +124,11 @@ export const ROUTES_OPTIONS = {
 
     [ROUTES.REGISTRATION_PARTICIPANT_INFO]: {
         ...screenOptionsWithTitle("Participant Registration"),
+        headerLeft: HEADER_LEFT.back,
+    },
+
+    [ROUTES.REGISTRATION_PARTICIPANT_DETAILS]: {
+        ...screenOptionsWithTitle("Participant Details"),
         headerLeft: HEADER_LEFT.back,
     },
 

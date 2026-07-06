@@ -15,7 +15,7 @@ const SelectEvent = () => {
     return (
         <PrimaryLayout header background>
             <View style={styles.container}>
-                <RegistrationStepIndicator current={1} />
+                <RegistrationStepIndicator current={1} total={4} />
 
                 <View style={styles.header}>
                     <Text size={19} weight="semibold">Select an Event</Text>

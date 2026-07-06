@@ -1,20 +1,24 @@
-import { memo } from "react"
+import { memo, useMemo } from "react"
 import { StyleSheet, View } from "react-native"
 import colors from "../../helpers/colors"
-import { heightPixel, widthPixel } from "../../helpers/metrics"
+import { heightPixel } from "../../helpers/metrics"
 import Text from "../Text"
 import Row from "../Row"
 
-const STEPS = [1, 2, 3]
+const RegistrationStepIndicator = ({ current = 1, total = 4 }) => {
 
-const RegistrationStepIndicator = ({ current = 1, total = 3 }) => {
+    const steps = useMemo(
+        () => Array.from({ length: total }, (_, index) => index + 1),
+        [total]
+    )
+
     return (
         <View style={styles.container}>
             <Text size={13} color={colors.text_secondary} weight="semibold">
                 Step {current} of {total}
             </Text>
             <Row gap={8} style={styles.dots_row}>
-                {STEPS.slice(0, total).map((step) => (
+                {steps.map((step) => (
                     <View
                         key={step}
                         style={[

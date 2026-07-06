@@ -91,10 +91,7 @@ export const registrationApi = baseApi.injectEndpoints({
                 const registration = { ...mock_registrations[index] }
 
                 if (action === "accept") {
-                    registration.payment = {
-                        ...registration.payment,
-                        status: "paid",
-                    }
+                    registration.status = "active"
                 } else if (action === "reject") {
                     registration.status = "cancelled"
                 } else {
@@ -107,7 +104,7 @@ export const registrationApi = baseApi.injectEndpoints({
                     data: {
                         success: true,
                         message: action === "accept"
-                            ? "Registration payment accepted"
+                            ? "Registration approved"
                             : "Registration rejected",
                         data: registration,
                     },

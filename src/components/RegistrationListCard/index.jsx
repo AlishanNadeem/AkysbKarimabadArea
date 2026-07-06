@@ -52,7 +52,7 @@ const RegistrationListCard = ({ data, onPress, onAccept, onReject, loading_id })
     const status_style = STATUS_BADGE_STYLES[status] ?? STATUS_BADGE_STYLES.active
     const date_label = created_at ? dayjs(created_at).format("MMM D, YYYY") : ""
     const amount_label = amount_paid > 0 ? `Rs. ${amount_paid}` : "Free"
-    const show_actions = payment?.status === "pending" && status !== "cancelled"
+    const show_actions = payment?.status === "paid" && status !== "cancelled"
     const is_loading = loading_id === registration_id
 
     return (

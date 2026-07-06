@@ -101,7 +101,7 @@ const useListController = () => {
         const confirmed = await showConfirmModal({
             title: is_accept ? "Accept Registration" : "Reject Registration",
             message: is_accept
-                ? "Mark this registration payment as paid?"
+                ? "Approve this registration?"
                 : "Are you sure you want to reject this registration?",
         })
 
@@ -112,9 +112,9 @@ const useListController = () => {
         try {
             await updateRegistrationStatus({ id: registration_id, action }).unwrap()
             showInfoModal({
-                title: is_accept ? "Payment Accepted" : "Registration Rejected",
+                title: is_accept ? "Registration Accepted" : "Registration Rejected",
                 message: is_accept
-                    ? "The registration payment has been marked as paid."
+                    ? "The registration has been approved."
                     : "The registration has been rejected.",
             })
         } catch {
