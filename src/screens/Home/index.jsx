@@ -26,6 +26,9 @@ const Home = () => {
                         <Text size={13} color={colors.text_secondary}>{values.user_subtitle}</Text>
                     ) : null}
                 </View>
+                <Button size="sm" type="primary" onPress={functions.onViewRegistrations}>
+                    View Registrations
+                </Button>
 
                 <Row gap={10}>
                     {values.stats.map((item) => (
@@ -49,9 +52,7 @@ const Home = () => {
                     <Button size="sm" onPress={functions.onNewRegistration}>
                         New Registration
                     </Button>
-                    <Button size="sm" type="primary" onPress={functions.onViewRegistrations}>
-                        View Registrations
-                    </Button>
+
                 </View>
 
                 <View style={styles.section}>
