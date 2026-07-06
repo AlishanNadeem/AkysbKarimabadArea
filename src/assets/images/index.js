@@ -23,6 +23,7 @@ const images = {
     clock: require("./clock.png"),
     siren: require("./siren.png"),
     arrow_right: require("./arrow_right.png"),
+    arrow_left: require("./arrow_left.png"),
     trash: require("./trash.png"),
     edit: require("./edit.png"),
     pin: require("./pin.png"),
@@ -30,6 +31,7 @@ const images = {
     calendar_animated: require("./calendar_animated.png"),
     calendar: require("./calendar.png"),
     down_arrow: require("./down_arrow.png"),
+    hi_icon: require("./hi_icon.png"),
 
     // Drawer
     drawer_logout: require("./drawer_logout.png"),

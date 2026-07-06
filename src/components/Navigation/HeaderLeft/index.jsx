@@ -2,7 +2,7 @@ import { memo } from "react"
 import Icon from "../../Icon"
 import colors from "../../../helpers/colors"
 
-const HeaderLeft = ({ icon, onPress, type = "primary" }) => {
+const HeaderLeft = ({ color, icon, onPress, type = "primary", size }) => {
 
     let props = {}
 
@@ -13,7 +13,7 @@ const HeaderLeft = ({ icon, onPress, type = "primary" }) => {
     }
 
     return (
-        <Icon source={icon} onPress={onPress} size={29} color={colors.black} {...props} />
+        <Icon source={icon} onPress={onPress} size={size ?? 29} color={color ?? colors.black} {...props} />
     )
 }
 

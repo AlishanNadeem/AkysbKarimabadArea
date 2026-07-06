@@ -20,7 +20,7 @@ const Confirmation = () => {
     return (
         <PrimaryLayout header background scrollable>
             <View style={styles.container}>
-                <RegistrationStepIndicator current={3} />
+                <RegistrationStepIndicator current={4} total={4} />
 
                 <View style={styles.header}>
                     <Text size={19} weight="semibold">Confirm Registration</Text>

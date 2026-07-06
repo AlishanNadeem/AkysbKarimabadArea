@@ -31,7 +31,7 @@ const ManageEvent = () => {
                         onRemove={functions.onRemoveImage}
                     />
 
-                    <Text size={19} weight="semibold">Basic Information</Text>
+                    <Text size={18} weight="bold">Basic Information.</Text>
 
                     <Input
                         required
@@ -53,7 +53,7 @@ const ManageEvent = () => {
                         error={formik.touched.description && formik.errors.description}
                     />
 
-                    <Text size={19} weight="semibold">Event Type</Text>
+                    <Text size={18} weight="bold">Event Type</Text>
                     <Row gap={8} style={styles.options_row}>
                         {values.event_types.map((item) => (
                             <SelectorBox
@@ -68,7 +68,7 @@ const ManageEvent = () => {
                         <Text size={12} color={colors.danger}>{formik.errors.type}</Text>
                     )}
 
-                    <Text size={19} weight="semibold">Schedule</Text>
+                    <Text size={18} weight="bold">Schedule</Text>
 
                     <DateTimeInput
                         required
@@ -113,7 +113,7 @@ const ManageEvent = () => {
                         </View>
                     </Row>
 
-                    <Text size={19} weight="semibold">Venue & Fees</Text>
+                    <Text size={18} weight="bold">Venue & Fees</Text>
 
                     <Input
                         required
@@ -138,7 +138,7 @@ const ManageEvent = () => {
                         error={formik.touched.fees && formik.errors.fees}
                     />
 
-                    <Text size={19} weight="semibold">Age Restriction (Optional)</Text>
+                    <Text size={18} weight="bold">Age Restriction (Optional)</Text>
 
                     <Row gap={12}>
                         <View style={styles.half_field}>
@@ -171,7 +171,7 @@ const ManageEvent = () => {
                         </View>
                     </Row>
 
-                    <Text size={19} weight="semibold">Registration Settings</Text>
+                    <Text size={18} weight="bold">Registration Settings</Text>
 
                     <Checkbox
                         label="Limit maximum registrations"
@@ -206,7 +206,7 @@ const ManageEvent = () => {
                         error={formik.touched.registration_deadline && formik.errors.registration_deadline}
                     />
 
-                    <Button onPress={formik.handleSubmit} loading={values.isLoading}>
+                    <Button type="primary" onPress={formik.handleSubmit} loading={values.isLoading}>
                         {values.button_text}
                     </Button>
 
@@ -229,7 +229,7 @@ export default ManageEvent
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        gap: heightPixel(20),
+        gap: heightPixel(16),
         paddingBottom: heightPixel(30),
     },
     options_row: {

@@ -52,7 +52,7 @@ const Checkbox = ({
                 >
                     {
                         value && (
-                            <Icon source={images.check} size={current_size.icon} color={colors.black} />
+                            <Icon source={images.check} size={current_size.icon} color={colors.white} />
                         )}
                 </View>
                 {

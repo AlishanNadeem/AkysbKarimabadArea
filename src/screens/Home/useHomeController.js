@@ -23,6 +23,10 @@ const useHomeController = () => {
         navigate(ROUTES.MANAGE_REGISTRATION)
     }, [])
 
+    const onViewRegistrations = useCallback(() => {
+        navigate(ROUTES.VIEW_REGISTRATIONS)
+    }, [])
+
     const onEditEvent = useCallback((id) => {
         navigate(ROUTES.MANAGE_EVENT, { id })
     }, [])
@@ -40,6 +44,7 @@ const useHomeController = () => {
             onCreateEvent,
             onBrowseEvents,
             onNewRegistration,
+            onViewRegistrations,
             onEditEvent,
         },
     }

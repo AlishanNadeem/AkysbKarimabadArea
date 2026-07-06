@@ -1,7 +1,7 @@
 import { memo } from "react"
 import { StyleSheet, View } from "react-native"
 import colors from "../../helpers/colors"
-import { heightPixel, widthPixel } from "../../helpers/metrics"
+import { heightPixel, SHADOW, widthPixel } from "../../helpers/metrics"
 import Text from "../Text"
 
 const NotificationCard = ({ data }) => {
@@ -30,11 +30,12 @@ const styles = StyleSheet.create({
         width: "100%",
         borderRadius: heightPixel(15),
         borderWidth: heightPixel(1),
-        borderColor: colors.transparent,
+        borderColor: colors.border,
         paddingHorizontal: widthPixel(16),
         paddingVertical: heightPixel(16),
-        backgroundColor: colors.input_background,
-        gap: heightPixel(8)
+        backgroundColor: colors.card,
+        gap: heightPixel(8),
+        ...SHADOW.sm,
     },
     content: {
         flex: 1,

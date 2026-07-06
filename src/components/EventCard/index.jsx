@@ -4,7 +4,7 @@ import images from "../../assets/images"
 import colors from "../../helpers/colors"
 import { formatDate } from "../../helpers/date"
 import { EVENT_TYPES } from "../../helpers/data"
-import { heightPixel, widthPixel } from "../../helpers/metrics"
+import { heightPixel, SHADOW, widthPixel } from "../../helpers/metrics"
 import Icon from "../Icon"
 import Row from "../Row"
 import Text from "../Text"
@@ -14,23 +14,23 @@ const BANNER_HEIGHT = heightPixel(150)
 
 const STATUS_STYLES = {
     draft: {
-        background: "#F0F0F0",
+        background: colors.light_gray,
         text: colors.dark_gray,
     },
     published: {
-        background: "#E3F2FD",
-        text: "#1565C0",
+        background: colors.primary_10,
+        text: colors.light_primary,
     },
     postponed: {
         background: "#FFF3E0",
-        text: "#E65100",
+        text: colors.orange,
     },
     cancelled: {
-        background: "#FFEBEE",
+        background: colors.pinkish_red,
         text: colors.danger,
     },
     completed: {
-        background: "#E8F5E9",
+        background: colors.dark_primary_10,
         text: "#2E7D32",
     },
 }
@@ -122,10 +122,11 @@ export default memo(EventCard)
 const styles = StyleSheet.create({
     container: {
         borderRadius: heightPixel(14),
-        backgroundColor: colors.white,
+        backgroundColor: colors.card,
         borderWidth: heightPixel(1),
         borderColor: colors.border,
         overflow: "hidden",
+        ...SHADOW.md,
     },
     banner: {
         height: BANNER_HEIGHT,

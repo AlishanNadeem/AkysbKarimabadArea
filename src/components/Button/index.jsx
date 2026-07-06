@@ -2,7 +2,7 @@ import { memo } from 'react';
 import { ActivityIndicator, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import colors from '../../helpers/colors';
-import { heightPixel, widthPixel } from '../../helpers/metrics';
+import { heightPixel, SHADOW, widthPixel } from '../../helpers/metrics';
 import { global_styles } from '../../helpers/styles';
 import Icon from '../Icon';
 import Row from '../Row';
@@ -24,7 +24,7 @@ const BUTTON_TYPES = {
     secondary: {
         background: [colors.white, colors.white],
         color: colors.dark_primary,
-        border_color: colors.transparent,
+        border_color: colors.dark_primary,
     },
     muted: {
         background: [colors.lightest_white, colors.lightest_white],
@@ -111,5 +111,6 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         borderRadius: heightPixel(12),
         borderWidth: heightPixel(1),
+        ...SHADOW.sm,
     },
 });

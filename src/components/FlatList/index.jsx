@@ -44,6 +44,7 @@ const FlatList = ({
             title={empty?.title}
             description={empty?.description}
             icon={empty?.icon}
+            action={empty?.action}
         />
     ), [empty])
 

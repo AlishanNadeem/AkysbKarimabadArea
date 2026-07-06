@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit"
 const initial = {
     event: null,
     participants: [],
+    participant_draft: null,
     payment: {
         status: "pending",
         method: "",
@@ -21,6 +22,9 @@ const registrationSlice = createSlice({
         setRegistrationParticipants: (state, action) => {
             state.participants = action.payload
         },
+        setParticipantDraft: (state, action) => {
+            state.participant_draft = action.payload
+        },
         setRegistrationPayment: (state, action) => {
             state.payment = { ...state.payment, ...action.payload }
         },
@@ -31,6 +35,7 @@ const registrationSlice = createSlice({
 export const {
     setRegistrationEvent,
     setRegistrationParticipants,
+    setParticipantDraft,
     setRegistrationPayment,
     resetRegistration,
 } = registrationSlice.actions

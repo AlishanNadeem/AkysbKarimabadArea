@@ -1,8 +1,7 @@
 import { memo } from "react"
 import { StyleSheet, View } from "react-native"
 import colors from "../../helpers/colors"
-import { theme } from "../../helpers/theme"
-import { heightPixel, widthPixel } from "../../helpers/metrics"
+import { heightPixel, SHADOW, widthPixel } from "../../helpers/metrics"
 import Icon from "../Icon"
 import Text from "../Text"
 
@@ -11,10 +10,10 @@ const HomeStatCard = ({ data }) => {
     const { label, value, icon } = data
 
     return (
-        <View style={[theme.card, styles.container]}>
-            <Icon source={icon} size={18} color={colors.light_primary} />
-            <Text size={22} weight="semibold" color={colors.light_primary}>{value}</Text>
-            <Text size={12} color={colors.text_secondary}>{label}</Text>
+        <View style={styles.container}>
+            <Icon source={icon} size={24} color={colors.light_primary} />
+            <Text size={24} weight="bold">{value}</Text>
+            <Text size={13} color={colors.gray}>{label}</Text>
         </View>
     )
 }
@@ -29,5 +28,10 @@ const styles = StyleSheet.create({
         gap: heightPixel(4),
         paddingVertical: heightPixel(14),
         paddingHorizontal: widthPixel(8),
+        borderRadius: heightPixel(12),
+        backgroundColor: colors.card,
+        borderWidth: heightPixel(1),
+        borderColor: colors.border,
+        ...SHADOW.sm,
     },
 })
