@@ -29,12 +29,12 @@ const DRAWER = [
         route: NAVIGATORS.APP_STACK,
         params: { screen: ROUTES.EVENTS },
     },
-    {
-        label: "Registrations",
-        icon: images.check_badge,
-        route: NAVIGATORS.APP_STACK,
-        params: { screen: ROUTES.VIEW_REGISTRATIONS },
-    },
+    // {
+    //     label: "Registrations",
+    //     icon: images.check_badge,
+    //     route: NAVIGATORS.APP_STACK,
+    //     params: { screen: ROUTES.VIEW_REGISTRATIONS },
+    // },
     {
         label: "Profile",
         icon: images.drawer_profile,

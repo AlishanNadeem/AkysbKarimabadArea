@@ -24,6 +24,9 @@ const Events = () => {
                 <FlatList
                     data={values.data}
                     separator={12}
+                    contentContainerStyle={{
+                        paddingBottom: heightPixel(40),
+                    }}
                     refreshing={values.refreshing}
                     onRefresh={functions.onRefresh}
                     empty={{

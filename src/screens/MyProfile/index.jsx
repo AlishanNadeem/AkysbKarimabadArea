@@ -7,6 +7,7 @@ import { heightPixel } from "../../helpers/metrics"
 import PrimaryLayout from "../../layouts/PrimaryLayout"
 import useMyProfileController from "./useMyProfileController"
 import PhoneInput from "../../components/PhoneInput"
+import images from "../../assets/images"
 
 const MyProfile = () => {
 
@@ -16,7 +17,7 @@ const MyProfile = () => {
         <PrimaryLayout scrollable header background>
             <View style={styles.container}>
                 <View style={styles.icon_wrapper}>
-                    <Icon rounded={"full"} source={{ uri: values?.user?.image_url }} size={88} resize="cover" />
+                    <Icon rounded={"full"} source={images.avatar_one} size={120} resize="cover" />
                 </View>
                 <Input
                     label={"Name"}
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         gap: heightPixel(20)
     },
     icon_wrapper: {
-        marginBottom: heightPixel(20),
+        marginBottom: heightPixel(10),
         alignItems: "center"
     }
 })

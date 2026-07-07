@@ -105,7 +105,8 @@ export const ROUTES_OPTIONS = {
     },
 
     [ROUTES.MY_PROFILE]: {
-        headerShown: false,
+        ...screenOptionsWithTitle("My Profile"),
+        headerLeft: HEADER_LEFT.drawer,
     },
 
     [ROUTES.MANAGE_EVENT]: {
